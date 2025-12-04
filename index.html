@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENS_HAND Dexterous Robot Hand Assembly Tutorial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: var(--light-color);
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: var(--transition);
+            }
+
+                .nav-links a:hover {
+                    color: var(--secondary-color);
+                }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+            z-index: 100;
+            top: 70px;
+        }
+
+        .steps-nav {
+            padding: 0 20px;
+        }
+
+        .steps-section {
+            margin-bottom: 25px;
+        }
+
+            .steps-section h3 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                color: var(--light-color);
+            }
+
+        .step-item {
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+            .step-item:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .step-item.active {
+                background-color: var(--secondary-color);
+                font-weight: bold;
+            }
+
+        /* Main Content Area Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 30px;
+            background-color: white;
+            min-height: calc(100vh - 140px);
+        }
+
+        /* Welcome Page Styles */
+        .welcome-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+            .welcome-header h1 {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+
+            .welcome-header p {
+                font-size: 1.2rem;
+                max-width: 700px;
+                margin: 0 auto;
+                line-height: 1.6;
+            }
+
+        .welcome-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .welcome-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+            .welcome-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .welcome-card h3 {
+                color: var(--primary-color);
+                margin-bottom: 15px;
+                font-size: 1.3rem;
+                display: flex;
+                align-items: center;
+            }
+
+                .welcome-card h3 i {
+                    margin-right: 10px;
+                    color: var(--secondary-color);
+                }
+
+            .welcome-card p {
+                margin-bottom: 15px;
+            }
+
+            .welcome-card ul {
+                margin-left: 20px;
+                margin-bottom: 15px;
+            }
+
+            .welcome-card li {
+                margin-bottom: 8px;
+            }
+
+        .highlight-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+            .cta-button:hover {
+                background-color: var(--primary-color);
+                transform: translateY(-2px);
+            }
+
+        /* Step Page Styles */
+        .step-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+            .step-header h2 {
+                font-size: 1.8rem;
+                color: var(--primary-color);
+                margin-bottom: 10px;
+            }
+
+            .step-header .step-number {
+                display: inline-block;
+                background-color: var(--secondary-color);
+                color: white;
+                padding: 5px 12px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                margin-right: 10px;
+            }
+
+        .step-content {
+            margin-bottom: 40px;
+        }
+
+        /* Step 00 Specific Styles */
+        .step00-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .step00-images {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step00-main-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+            .step00-main-image:hover {
+                transform: scale(1.02);
+            }
+
+        /* Carousel Component Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            color: var(--dark-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+            .carousel-btn:hover {
+                background-color: white;
+                transform: translateY(-50%) scale(1.1);
+            }
+
+            .carousel-btn.prev {
+                left: 15px;
+            }
+
+            .carousel-btn.next {
+                right: 15px;
+            }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #bdc3c7;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+            .indicator.active {
+                background-color: var(--secondary-color);
+                transform: scale(1.2);
+            }
+
+        .step00-description {
+            flex: 1;
+            min-width: 300px;
+        }
+
+            .step00-description h3 {
+                color: var(--primary-color);
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+                padding-bottom: 8px;
+                border-bottom: 2px solid #eee;
+            }
+
+            .step00-description p {
+                margin-bottom: 20px;
+                line-height: 1.7;
+            }
+
+            .step00-description ul {
+                list-style-type: none;
+                margin-bottom: 25px;
+            }
+
+            .step00-description li {
+                padding: 10px 0;
+                padding-left: 30px;
+                position: relative;
+                border-bottom: 1px dashed #eee;
+            }
+
+                .step00-description li:before {
+                    content: "•";
+                    color: var(--secondary-color);
+                    font-size: 20px;
+                    position: absolute;
+                    left: 0;
+                }
+
+                .step00-description li:last-child {
+                    border-bottom: none;
+                }
+
+        .step00-note-box {
+            background-color: #f0f7ff;
+            border-left: 4px solid var(--secondary-color);
+            padding: 18px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+            .step00-note-box p {
+                margin-bottom: 0;
+                color: var(--primary-color);
+            }
+
+        .step-description {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            line-height: 1.7;
+        }
+
+            .step-description h3 {
+                margin-bottom: 15px;
+                color: var(--primary-color);
+            }
+
+            .step-description p {
+                margin-bottom: 15px;
+            }
+
+            .step-description ul {
+                margin-left: 20px;
+                margin-bottom: 15px;
+            }
+
+            .step-description li {
+                margin-bottom: 8px;
+            }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Navigation Button Styles */
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+            .nav-button:hover {
+                background-color: #2980b9;
+            }
+
+            .nav-button.prev::before {
+                content: "←";
+                margin-right: 8px;
+            }
+
+            .nav-button.next::after {
+                content: "→";
+                margin-left: 8px;
+            }
+
+            .nav-button:disabled {
+                background-color: #bdc3c7;
+                cursor: not-allowed;
+            }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--light-color);
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+            .footer-section a:hover {
+                color: white;
+            }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+            .social-links a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                transition: var(--transition);
+            }
+
+                .social-links a:hover {
+                    background-color: var(--secondary-color);
+                    transform: translateY(-3px);
+                }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .license-info {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: var(--border-radius);
+            margin-top: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                top: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .welcome-content {
+                grid-template-columns: 1fr;
+            }
+
+            .step00-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .step-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-header h1 {
+                font-size: 2rem;
+            }
+
+            .carousel-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="brand">
+            <div class="brand-logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="brand-text">
+                <h1>SENS_HAND Dexterous Hand</h1>
+                <p>Robot Hand Assembly Tutorial</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+            <a href="#"><i class="fas fa-book"></i> Tutorial</a>
+            <a href="#"><i class="fas fa-download"></i> Downloads</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="steps-nav">
+                <div class="steps-section">
+                    <h3>Part 1: Tendons and Knots</h3>
+                    <div class="step-item active" data-step="0">00: About Tendons and Knots</div>
+                    <div class="step-item" data-step="1">01: Fingertip Tendon Routing</div>
+                    <div class="step-item" data-step="2">02: PP Tendon Routing</div>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 2: Finger Assembly</h3>
+                    <div class="step-item" data-step="3">03: Abduction Routing</div>
+                    <div class="step-item" data-step="4">04: Thumb Abduction Tendon Routing</div>
+                    <div class="step-item" data-step="5">05: Finger Assembly</div>
+                    <div class="step-item" data-step="6">06: About Tendons and Knots</div>
+                    <div class="step-item" data-step="7">07: Thumb Assembly</div>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 3: Wrist and Main Body</h3>
+                    <div class="step-item" data-step="8">08: Skin to Carpal Bones</div>
+                    <div class="step-item" data-step="9">09: PTFE Tubes in Carpal</div>
+                    <div class="step-item" data-step="10">10: Index to Carpal Assembly</div>
+                    <div class="step-item" data-step="11">11: Thumb to Carpal Assembly</div>
+                    <div class="step-item" data-step="12">12: Carpal Gears and Rods</div>
+                    <div class="step-item" data-step="13">13: PTFE Tubes in Top Tower</div>
+                    <div class="step-item" data-step="14">14: Wrist Servo Assembly</div>
+                    <div class="step-item" data-step="15">15: Top Tower Strap Tension Screw</div>
+                    <div class="step-item" data-step="16">16: Wrist Servo Placement</div>
+                    <div class="step-item" data-step="17">17: Carpal to Top Tower</div>
+                    <div class="step-item" data-step="18">18: Carpal Bearing Cover</div>
+                    <div class="step-item" data-step="19">19: Tensioning Wrist Strap</div>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 4: Electronics and Final Assembly</h3>
+                    <div class="step-item" data-step="20">20: Setting Up Dupomixels</div>
+                    <div class="step-item" data-step="21">21: Spool Assembly and Servo Connection</div>
+                    <div class="step-item" data-step="22">22: PCB to Tower Connection</div>
+                    <div class="step-item" data-step="23">23: Servo to Tower Connection</div>
+                    <div class="step-item" data-step="24">24: Rod Stopper to Tower</div>
+                    <div class="step-item" data-step="25">25: Carpal and Top Tower to Bottom Tower</div>
+                    <div class="step-item" data-step="26">26: Tendon Wrapping</div>
+                    <div class="step-item" data-step="27">27: Magnets on Tower and Case</div>
+                    <div class="step-item" data-step="28">28: SENS_HAND Letters on Case</div>
+                    <div class="step-item" data-step="29">29: Complete Assembly</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Welcome Page -->
+            <div id="welcome-page" class="welcome-container">
+                <div class="welcome-header">
+                    <h1>Welcome to SENS_HAND v1 Dexterous Hand!</h1>
+                    <p>All files are ready to start assembling your SENS_HAND v1 Dexterous Hand</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3><i class="fas fa-info-circle"></i> Important Notice</h3>
+                    <p>The current SENS_HAND v1 release does not include sensors as we are still improving the reliability of the sensor version. The sensor version will be released later this year.</p>
+                </div>
+
+                <div class="welcome-content">
+                    <div class="welcome-card">
+                        <h3><i class="fas fa-tools"></i> Before You Begin</h3>
+                        <p>Before starting assembly, make sure you have all necessary tools and parts ready:</p>
+                        <ul>
+                            <li>Complete SENS_HAND v1 parts kit</li>
+                            <li>Screwdriver set</li>
+                            <li>Pliers</li>
+                            <li>Tweezers</li>
+                            <li>PTFE tubes and tendon wires</li>
+                        </ul>
+                        <p>It's recommended to work on an anti-static mat and keep your workspace clean.</p>
+                    </div>
+
+                    <div class="welcome-card">
+                        <h3><i class="fas fa-video"></i> Video Tutorials</h3>
+                        <p>We provide detailed video tutorials to help you better understand the assembly process:</p>
+                        <ul>
+                            <li>Complete assembly process video</li>
+                            <li>Key steps explained in detail</li>
+                            <li>Frequently asked questions</li>
+                            <li>Troubleshooting guide</li>
+                        </ul>
+                        <a href="#" class="cta-button"><i class="fas fa-play-circle"></i> Watch Tutorial Videos</a>
+                    </div>
+
+                    <div class="welcome-card">
+                        <h3><i class="fas fa-file-download"></i> Resource Downloads</h3>
+                        <p>Download the following resources to help with your assembly:</p>
+                        <ul>
+                            <li>3D Printing Files (STL format)</li>
+                            <li>Parts List (BOM)</li>
+                            <li>Assembly Diagrams (PDF)</li>
+                            <li>Firmware and Software</li>
+                        </ul>
+                        <a href="#" class="cta-button"><i class="fas fa-download"></i> Download Resource Package</a>
+                    </div>
+
+                    <div class="welcome-card">
+                        <h3><i class="fas fa-users"></i> Community Support</h3>
+                        <p>Join our community for help and to share your experience:</p>
+                        <ul>
+                            <li>Official Forum</li>
+                            <li>Discord Channel</li>
+                            <li>GitHub Repository</li>
+                            <li>User Project Showcase</li>
+                        </ul>
+                        <a href="#" class="cta-button"><i class="fas fa-comments"></i> Join Community</a>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#" id="start-tutorial" class="cta-button" style="padding: 15px 30px; font-size: 1.1rem;">
+                        <i class="fas fa-play"></i> Start Tutorial
+                    </a>
+                </div>
+            </div>
+
+            <!-- Step Page (Hidden by default) -->
+            <div id="step-page" style="display: none;">
+                <div class="step-header">
+                    <div class="step-meta">
+                        <span class="step-number">Step 00</span>
+                        <div class="step-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/29</span>
+                        </div>
+                    </div>
+                    <h1>About Tendons and Knots</h1>
+                    <div class="step-tags">
+                        <span class="tag primary">Tendon System</span>
+                        <span class="tag secondary">Basic Skills</span>
+                        <span class="tag accent">Key Step</span>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="step-layout">
+                        <!-- Left: Visual Content Area -->
+                        <div class="visual-section">
+                            <!-- Main Image Display -->
+                            <div class="main-visual">
+                                <div class="visual-header">
+                                    <h3><i class="fas fa-image"></i> Ashley Stopper Knot Diagram</h3>
+                                    <button class="visual-action">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                                <div class="main-image-container">
+                                    <img src="assets/images/step00.jpg" alt="Ashley Stopper Knot Diagram" class="step00-main-image">
+                                    <div class="image-overlay">
+                                        <div class="overlay-content">
+                                            <i class="fas fa-search-plus"></i>
+                                            <span>Click to Enlarge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Detailed Diagram Carousel -->
+                            <div class="detail-carousel">
+                                <div class="carousel-header">
+                                    <h4><i class="fas fa-images"></i> Knot Detail Diagrams</h4>
+                                    <div class="carousel-nav">
+                                        <span class="carousel-counter">1/6</span>
+                                        <div class="carousel-controls">
+                                            <button class="carousel-btn prev">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </button>
+                                            <button class="carousel-btn next">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-container">
+                                    <div class="carousel-track">
+                                        <div class="carousel-item active">
+                                            <div class="carousel-card">
+                                                <img src="assets/images001.png" alt="Knot Diagram 1" class="carousel-image">
+                                                <div class="carousel-caption">
+                                                    <span class="caption-number">01</span>
+                                                    <span class="caption-text">Basic Knot Structure</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="carousel-card">
+                                                <img src="assets/images002.png" alt="Knot Diagram 2" class="carousel-image">
+                                                <div class="carousel-caption">
+                                                    <span class="caption-number">02</span>
+                                                    <span class="caption-text">Tightening Steps Demonstration</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="carousel-card">
+                                                <img src="assets/images003.png" alt="Knot Diagram 3" class="carousel-image">
+                                                <div class="carousel-caption">
+                                                    <span class="caption-number">03</span>
+                                                    <span class="caption-text">Tension Testing Method</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="carousel-card">
+                                                <img src="assets/images004.png" alt="Knot Diagram 4" class="carousel-image">
+                                                <div class="carousel-caption">
+                                                    <span class="caption-number">04</span>
+                                                    <span class="caption-text">Tool Usage Demonstration</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="carousel-card">
+                                                <img src="assets/images005.png" alt="Knot Diagram 5" class="carousel-image">
+                                                <div class="carousel-caption">
+                                                    <span class="caption-number">05</span>
+                                                    <span class="caption-text">Common Error Examples</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="carousel-card">
+                                                <img src="assets/images006.png" alt="Knot Diagram 6" class="carousel-image">
+                                                <div class="carousel-caption">
+                                                    <span class="caption-number">06</span>
+                                                    <span class="caption-text">Final Result Showcase</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-indicators">
+                                    <div class="indicator active" data-index="0"></div>
+                                    <div class="indicator" data-index="1"></div>
+                                    <div class="indicator" data-index="2"></div>
+                                    <div class="indicator" data-index="3"></div>
+                                    <div class="indicator" data-index="4"></div>
+                                    <div class="indicator" data-index="5"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Explanation Content Area -->
+                        <div class="content-section">
+                            <!-- Technical Points -->
+                            <div class="content-card primary">
+                                <div class="card-header">
+                                    <i class="fas fa-knot"></i>
+                                    <h3>Ashley Stopper Knot Technique</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p>The Ashley Stopper knot is widely used throughout the assembly process. This knot is the preferred connection method for robot tendon systems due to its reliability and easy identification.</p>
+                                    <div class="tech-specs">
+                                        <div class="spec-item">
+                                            <span class="spec-label">Application</span>
+                                            <span class="spec-value">Tendon End Fixation</span>
+                                        </div>
+                                        <div class="spec-item">
+                                            <span class="spec-label">Strength Level</span>
+                                            <span class="spec-value">High</span>
+                                        </div>
+                                        <div class="spec-item">
+                                            <span class="spec-label">Reliability</span>
+                                            <span class="spec-value">Excellent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Operational Points -->
+                            <div class="content-card secondary">
+                                <div class="card-header">
+                                    <i class="fas fa-tools"></i>
+                                    <h3>Knot Tightening Operation Points</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="procedure-list">
+                                        <div class="procedure-item">
+                                            <div class="procedure-number">01</div>
+                                            <div class="procedure-content">
+                                                <h4>Bidirectional Even Tightening</h4>
+                                                <p>Always firmly tighten the knot by pulling from both sides to ensure even tension distribution</p>
+                                            </div>
+                                        </div>
+                                        <div class="procedure-item">
+                                            <div class="procedure-number">02</div>
+                                            <div class="procedure-content">
+                                                <h4>Tool-Assisted Tensioning</h4>
+                                                <p>Use pliers to apply additional tension to ensure the knot reaches optimal tightness</p>
+                                            </div>
+                                        </div>
+                                        <div class="procedure-item">
+                                            <div class="procedure-number">03</div>
+                                            <div class="procedure-content">
+                                                <h4>Reliability Check</h4>
+                                                <p>Loose knots may come undone with repeated use. Always check tightness after each assembly</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Important Notes -->
+                            <div class="content-card warning">
+                                <div class="card-header">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <h3>Critical Considerations</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="warning-content">
+                                        <div class="warning-icon">
+                                            <i class="fas fa-ruler"></i>
+                                        </div>
+                                        <div class="warning-text">
+                                            <strong>Dimensional Accuracy Requirement:</strong>
+                                            Ensure the knot is tight, with approximately 0.5 cm distance between the knot and the end.
+                                            This distance is crucial for ensuring tendon range of motion and avoiding interference.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Information -->
+                            <div class="content-card info">
+                                <div class="card-header">
+                                    <i class="fas fa-info-circle"></i>
+                                    <h3>Additional Notes and References</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p>You can watch assembly videos to get a general idea of the assembly process, but please note the following important points:</p>
+                                    <div class="info-alert">
+                                        <div class="alert-icon">
+                                            <i class="fas fa-video"></i>
+                                        </div>
+                                        <div class="alert-content">
+                                            <strong>Version Compatibility Note:</strong>
+                                            The assembly hand shown in the video is a slightly older version. Always refer to this guide for the latest instructions.
+                                            Videos are provided as supplementary material to help familiarize you with assembly steps, but should not be used as primary reference.
+                                        </div>
+                                    </div>
+                                    <div class="reference-links">
+                                        <a href="#" class="reference-link">
+                                            <i class="fas fa-download"></i>
+                                            <span>Download High-Res Diagrams</span>
+                                        </a>
+                                        <a href="#" class="reference-link">
+                                            <i class="fas fa-book"></i>
+                                            <span>View Knot Technique Manual</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <div class="nav-section">
+                        <button class="nav-button prev" disabled>
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Previous Step</span>
+                        </button>
+                        <div class="nav-info">
+                            <span class="current-step">Step 00</span>
+                            <span class="step-title">About Tendons and Knots</span>
+                        </div>
+                    </div>
+                    <div class="nav-section">
+                        <div class="completion-status">
+                            <i class="fas fa-check-circle
