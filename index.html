@@ -1088,4 +1088,266 @@
                     </div>
                     <div class="nav-section">
                         <div class="completion-status">
-                            <i class="fas fa-check-circle
+                            <i class="fas fa-check-circle></i>
+                        </div>
+                        <span class="status-text">Mark Complete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-section">
+                <button class="nav-button next">
+                    <span>Next Step</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div class="next-step-info">
+                    <span class="next-label">Next:</span>
+                    <span class="next-title">Fingertip Tendon Routing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SENS_HAND Project</h3>
+                <p>SENS_HAND v1 is an open-source dexterous robotic hand designed for research, education, and development in robotics and prosthetics.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#">Documentation</a>
+                <a href="#">Assembly Guide</a>
+                <a href="#">Troubleshooting</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#">3D Models</a>
+                <a href="#">Firmware</a>
+                <a href="#">Software Tools</a>
+                <a href="#">Parts List</a>
+            </div>
+            <div class="footer-section">
+                <h3>Community</h3>
+                <a href="#">Forum</a>
+                <a href="#">Projects</a>
+                <a href="#">Contributors</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="license-info">
+                <p>SENS_HAND v1 is released under the MIT License. All documentation and tutorials are licensed under Creative Commons Attribution 4.0 International.</p>
+            </div>
+            <p>&copy; 2024 SENS_HAND Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Image Zoom -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img class="modal-image" src="" alt="Enlarged view">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for the tutorial functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const welcomePage = document.getElementById('welcome-page');
+            const stepPage = document.getElementById('step-page');
+            const startTutorialBtn = document.getElementById('start-tutorial');
+            const stepItems = document.querySelectorAll('.step-item');
+            const prevBtn = document.querySelector('.nav-button.prev');
+            const nextBtn = document.querySelector('.nav-button.next');
+            const carousel = document.querySelector('.carousel');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevCarouselBtn = document.querySelector('.carousel-btn.prev');
+            const nextCarouselBtn = document.querySelector('.carousel-btn.next');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.querySelector('.modal-image');
+            const closeModal = document.querySelector('.close-modal');
+            const mainImage = document.querySelector('.step00-main-image');
+            const carouselImages = document.querySelectorAll('.carousel-image');
+
+            let currentStep = 0;
+            let currentCarouselIndex = 0;
+
+            // Start Tutorial Button
+            startTutorialBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                welcomePage.style.display = 'none';
+                stepPage.style.display = 'block';
+                updateStepContent(0);
+            });
+
+            // Step Navigation
+            stepItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const step = parseInt(this.getAttribute('data-step'));
+                    welcomePage.style.display = 'none';
+                    stepPage.style.display = 'block';
+                    updateStepContent(step);
+                });
+            });
+
+            // Update Step Content
+            function updateStepContent(step) {
+                currentStep = step;
+
+                // Update active step in sidebar
+                stepItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (parseInt(item.getAttribute('data-step')) === step) {
+                        item.classList.add('active');
+                    }
+                });
+
+                // Update step header
+                const stepTitle = stepItems[step].textContent.split(': ')[1];
+                const stepNumber = step < 10 ? '0' + step : step.toString();
+                document.querySelector('.step-number').textContent = `Step ${stepNumber}`;
+                document.querySelector('.step-header h1').textContent = stepTitle;
+                document.querySelector('.current-step').textContent = `Step ${stepNumber}`;
+                document.querySelector('.step-title').textContent = stepTitle;
+
+                // Update progress bar
+                const progressPercent = (step / 29) * 100;
+                document.querySelector('.progress-fill').style.width = `${progressPercent}%`;
+                document.querySelector('.progress-text').textContent = `${step}/29`;
+
+                // Update navigation buttons
+                prevBtn.disabled = step === 0;
+                if (step === 29) {
+                    nextBtn.innerHTML = '<i class="fas fa-check"></i><span>Complete Tutorial</span>';
+                } else {
+                    nextBtn.innerHTML = '<span>Next Step</span><i class="fas fa-arrow-right"></i>';
+                }
+
+                // Update next step info
+                if (step < 29) {
+                    const nextStepTitle = stepItems[step + 1].textContent.split(': ')[1];
+                    document.querySelector('.next-title').textContent = nextStepTitle;
+                }
+            }
+
+            // Previous/Next Step Navigation
+            prevBtn.addEventListener('click', function() {
+                if (currentStep > 0) {
+                    updateStepContent(currentStep - 1);
+                }
+            });
+
+            nextBtn.addEventListener('click', function() {
+                if (currentStep < 29) {
+                    updateStepContent(currentStep + 1);
+                } else {
+                    // Tutorial complete - show completion message
+                    alert('Tutorial completed! Congratulations on assembling your SENS_HAND.');
+                }
+            });
+
+            // Carousel Functionality
+            function updateCarousel() {
+                const offset = -currentCarouselIndex * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
+
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentCarouselIndex);
+                });
+
+                // Update counter
+                document.querySelector('.carousel-counter').textContent =
+                    `${currentCarouselIndex + 1}/${carouselItems.length}`;
+            }
+
+            // Carousel Navigation
+            prevCarouselBtn.addEventListener('click', function() {
+                currentCarouselIndex = (currentCarouselIndex - 1 + carouselItems.length) % carouselItems.length;
+                updateCarousel();
+            });
+
+            nextCarouselBtn.addEventListener('click', function() {
+                currentCarouselIndex = (currentCarouselIndex + 1) % carouselItems.length;
+                updateCarousel();
+            });
+
+            // Indicator Click
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    currentCarouselIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            // Modal Functionality
+            function openModal(imageSrc) {
+                modalImage.src = imageSrc;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeImageModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            // Main Image Click
+            if (mainImage) {
+                mainImage.addEventListener('click', function() {
+                    openModal(this.src);
+                });
+            }
+
+            // Carousel Images Click
+            carouselImages.forEach(image => {
+                image.addEventListener('click', function() {
+                    openModal(this.src);
+                });
+            });
+
+            // Close Modal
+            closeModal.addEventListener('click', closeImageModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeImageModal();
+                }
+            });
+
+            // Keyboard Navigation
+            document.addEventListener('keydown', function(e) {
+                // ESC to close modal
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeImageModal();
+                }
+
+                // Arrow keys for carousel when modal is not open
+                if (modal.style.display !== 'flex') {
+                    if (e.key === 'ArrowLeft') {
+                        prevCarouselBtn.click();
+                    } else if (e.key === 'ArrowRight') {
+                        nextCarouselBtn.click();
+                    }
+                }
+            });
+
+            // Initialize carousel
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>
