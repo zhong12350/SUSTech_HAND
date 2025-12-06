@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENS_HAND v1 Dexterous Hand - Step 21</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基于index.html的CSS，进行步骤页面扩展 */
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #c0392b;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation Bar - 与index.html保持一致 */
+        .top-nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: var(--light-color);
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary-color);
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar Navigation - 与index.html保持一致 */
+        .sidebar {
+            width: 280px;
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+            z-index: 900;
+            top: 70px;
+        }
+
+        .steps-nav {
+            padding: 0 20px;
+        }
+
+        .steps-section {
+            margin-bottom: 25px;
+        }
+
+        .steps-section h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--light-color);
+        }
+
+        .step-item {
+            display: block;
+            padding: 10px 12px;
+            margin-bottom: 5px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            color: white;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+        }
+
+        .step-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--secondary-color);
+        }
+
+        .step-item.active {
+            background-color: var(--secondary-color);
+            font-weight: bold;
+            border-left-color: var(--accent-color);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 30px;
+            background-color: white;
+            min-height: calc(100vh - 140px);
+        }
+
+        /* Step Header */
+        .step-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .step-progress {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--success-color);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .step-header h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 15px 0;
+        }
+
+        .step-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .tag.primary {
+            background-color: #e8f4fc;
+            color: var(--primary-color);
+        }
+
+        .tag.secondary {
+            background-color: #f0f7ff;
+            color: var(--secondary-color);
+        }
+
+        .tag.accent {
+            background-color: #fdeaea;
+            color: var(--accent-color);
+        }
+
+        .tag.success {
+            background-color: #e8f7ef;
+            color: var(--success-color);
+        }
+
+        /* Alert Box */
+        .alert-box {
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .alert-box.warning {
+            background-color: #fff8e6;
+            border-left: 5px solid var(--warning-color);
+        }
+
+        .alert-box i {
+            font-size: 1.2rem;
+            color: var(--warning-color);
+            margin-top: 3px;
+        }
+
+        .alert-content h4 {
+            margin-bottom: 5px;
+            color: #856404;
+        }
+
+        .alert-content p {
+            color: #664d03;
+        }
+
+        /* Step Content Layout */
+        .step-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        /* Image Gallery Section */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .image-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .step-image:hover {
+            transform: scale(1.02);
+        }
+
+        .image-caption {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+
+        .image-caption h4 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .image-caption p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Instruction Section */
+        .instruction-section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .section-header i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .section-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .instruction-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .instruction-item {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .instruction-item:hover {
+            background-color: #f0f7ff;
+        }
+
+        .instruction-number {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .instruction-content h4 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .instruction-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .tip-box {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .tip-box i {
+            color: var(--secondary-color);
+            margin-right: 8px;
+        }
+
+        /* Tools and Materials */
+        .tools-materials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .tools-card, .materials-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .tools-card h3, .materials-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        .material-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .material-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Notes Section */
+        .notes-section {
+            background-color: #f0f7ff;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .notes-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Video Section */
+        .video-section {
+            margin-bottom: 40px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            background-color: #000;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .video-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        /* Step Navigation */
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .nav-button.prev {
+            background-color: #7f8c8d;
+        }
+
+        .nav-button.prev:hover {
+            background-color: #6c7b7d;
+        }
+
+        .nav-button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .completion-btn {
+            padding: 12px 30px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .completion-btn:hover {
+            background-color: #229954;
+            transform: translateY(-2px);
+        }
+
+        .completion-btn.completed {
+            background-color: #7dcea0;
+        }
+
+        .step-info {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .step-info .current {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .step-info .next {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Footer - 与index.html保持一致 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--light-color);
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .license-info {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: var(--border-radius);
+            margin-top: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Modal for Image Zoom */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                top: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .image-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .step-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-button, .completion-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .step-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .tools-materials {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .step-number {
+                font-size: 1rem;
+                padding: 6px 12px;
+            }
+            
+            .progress-bar {
+                width: 150px;
+            }
+            
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="brand">
+            <div class="brand-logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="brand-text">
+                <h1>SENS_HAND Dexterous Hand</h1>
+                <p>Step 21: Spool Assembly and Servo Connection</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="../index.html#tutorial"><i class="fas fa-book"></i> Tutorial</a>
+            <a href="../index.html#resources"><i class="fas fa-download"></i> Downloads</a>
+            <a href="../index.html#help"><i class="fas fa-question-circle"></i> Help</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="steps-nav">
+                <div class="steps-section">
+                    <h3>Part 1: Tendons and Knots</h3>
+                    <a href="step00.html" class="step-item ">00: About Tendons and Knots</a>
+                    <a href="step01.html" class="step-item ">01: Fingertip Tendon Routing</a>
+                    <a href="step02.html" class="step-item ">02: PP Tendon Routing</a>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 2: Finger Assembly</h3>
+                    <a href="step03.html" class="step-item ">03: Abduction Routing</a>
+                    <a href="step04.html" class="step-item ">04: Thumb Abduction Tendon Routing</a>
+                    <a href="step05.html" class="step-item ">05: Finger Assembly</a>
+                    <a href="step06.html" class="step-item ">06: About Tendons and Knots</a>
+                    <a href="step07.html" class="step-item ">07: Thumb Assembly</a>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 3: Wrist and Main Body</h3>
+                    <a href="step08.html" class="step-item ">08: Skin to Carpal Bones</a>
+                    <a href="step09.html" class="step-item ">09: PTFE Tubes in Carpal</a>
+                    <a href="step10.html" class="step-item ">10: Index to Carpal Assembly</a>
+                    <a href="step11.html" class="step-item ">11: Thumb to Carpal Assembly</a>
+                    <a href="step12.html" class="step-item ">12: Carpal Gears and Rods</a>
+                    <a href="step13.html" class="step-item ">13: PTFE Tubes in Top Tower</a>
+                    <a href="step14.html" class="step-item ">14: Wrist Servo Assembly</a>
+                    <a href="step15.html" class="step-item ">15: Top Tower Strap Tension Screw</a>
+                    <a href="step16.html" class="step-item ">16: Wrist Servo Placement</a>
+                    <a href="step17.html" class="step-item ">17: Carpal to Top Tower</a>
+                    <a href="step18.html" class="step-item ">18: Carpal Bearing Cover</a>
+                    <a href="step19.html" class="step-item ">19: Tensioning Wrist Strap</a>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 4: Electronics and Final Assembly</h3>
+                    <a href="step20.html" class="step-item ">20: Setting Up Dupomixels</a>
+                    <a href="step21.html" class="step-item active">21: Spool Assembly and Servo Connection</a>
+                    <a href="step22.html" class="step-item ">22: PCB to Tower Connection</a>
+                    <a href="step23.html" class="step-item ">23: Servo to Tower Connection</a>
+                    <a href="step24.html" class="step-item ">24: Rod Stopper to Tower</a>
+                    <a href="step25.html" class="step-item ">25: Carpal and Top Tower to Bottom Tower</a>
+                    <a href="step26.html" class="step-item ">26: Tendon Wrapping</a>
+                    <a href="step27.html" class="step-item ">27: Magnets on Tower and Case</a>
+                    <a href="step28.html" class="step-item ">28: SENS_HAND Letters on Case</a>
+                    <a href="step29.html" class="step-item ">29: Complete Assembly</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Step Header -->
+            <div class="step-header">
+                <div class="step-meta">
+                    <span class="step-number">Step 21</span>
+                    <div class="step-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill" style="width: 72.4%"></div>
+                        </div>
+                        <span class="progress-text" id="progress-text">21/29</span>
+                    </div>
+                </div>
+                <h1>Spool Assembly and Servo Connection</h1>
+                <div class="step-tags">
+                    <span class="tag primary">Difficulty: {DIFFICULTY}</span>
+                    <span class="tag secondary">Time: {TIME_ESTIMATE}</span>
+                    <span class="tag accent">Tools: {TOOLS}</span>
+                    <span class="tag success">Part: {PART_NUMBER}</span>
+                </div>
+            </div>
+
+            <!-- Warning Alert -->
+            <div class="alert-box warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="alert-content">
+                    <h4>Important Safety Notice</h4>
+                    <p>Always use proper tools and follow safety procedures when working with small parts and electronics.</p>
+                </div>
+            </div>
+
+            <!-- Image Gallery Section - 6 Images with Captions -->
+            <div class="image-gallery">
+                <!-- Image 1 -->
+                <div class="image-item">
+                    <img src="../assets/images/step21/image1.jpg" alt="Step 21 - Image 1" class="step-image" data-image="1">
+                    <div class="image-caption">
+                        <h4>Figure 1.1: Primary Assembly View</h4>
+                        <p>This image shows the main components and their orientation before assembly. Note the alignment marks and reference points.</p>
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="image-item">
+                    <img src="../assets/images/step21/image2.jpg" alt="Step 21 - Image 2" class="step-image" data-image="2">
+                    <div class="image-caption">
+                        <h4>Figure 1.2: Component Placement</h4>
+                        <p>Detailed view showing the exact placement of each component. Pay attention to the orientation of asymmetrical parts.</p>
+                    </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="image-item">
+                    <img src="../assets/images/step21/image3.jpg" alt="Step 21 - Image 3" class="step-image" data-image="3">
+                    <div class="image-caption">
+                        <h4>Figure 1.3: Connection Details</h4>
+                        <p>Close-up view of connection points and interfaces. Ensure all connections are secure before proceeding.</p>
+                    </div>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="image-item">
+                    <img src="../assets/images/step21/image4.jpg" alt="Step 21 - Image 4" class="step-image" data-image="4">
+                    <div class="image-caption">
+                        <h4>Figure 1.4: Tool Usage</h4>
+                        <p>Demonstration of proper tool usage. Using the correct tools prevents damage to components.</p>
+                    </div>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="image-item">
+                    <img src="../assets/images/step21/image5.jpg" alt="Step 21 - Image 5" class="step-image" data-image="5">
+                    <div class="image-caption">
+                        <h4>Figure 1.5: Verification Check</h4>
+                        <p>Visual verification of correct assembly. Compare your work with this reference image.</p>
+                    </div>
+                </div>
+
+                <!-- Image 6 -->
+                <div class="image-item">
+                    <img src="../assets/images/step21/image6.jpg" alt="Step 21 - Image 6" class="step-image" data-image="6">
+                    <div class="image-caption">
+                        <h4>Figure 1.6: Final Result</h4>
+                        <p>Expected appearance after completing this step. Ensure your assembly matches this result before continuing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step-by-Step Instructions -->
+            <div class="instruction-section">
+                <div class="section-header">
+                    <i class="fas fa-list-ol"></i>
+                    <h3>Step-by-Step Instructions</h3>
+                </div>
+                
+                <div class="instruction-grid">
+                    <!-- Instruction 1 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">1</div>
+                        <div class="instruction-content">
+                            <h4>Prepare Components</h4>
+                            <p>Gather all components listed in the tools and materials section. Lay them out on a clean, well-lit workspace.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Tip:</strong> Use an anti-static mat when handling electronic components to prevent damage from static electricity.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instruction 2 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">2</div>
+                        <div class="instruction-content">
+                            <h4>Identify Orientation Marks</h4>
+                            <p>Examine each component for orientation marks, notches, or alignment indicators. Refer to Figure 1.1 for reference.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <strong>Important:</strong> Incorrect orientation may prevent proper assembly or damage components.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instruction 3 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">3</div>
+                        <div class="instruction-content">
+                            <h4>Begin Assembly</h4>
+                            <p>Start assembling components as shown in Figure 1.2. Apply gentle pressure and ensure proper alignment before securing connections.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-tools"></i>
+                                <strong>Tool Note:</strong> Use the appropriate screwdriver size to avoid stripping screw heads.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instruction 4 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">4</div>
+                        <div class="instruction-content">
+                            <h4>Secure Connections</h4>
+                            <p>Tighten all connections firmly but not excessively. Over-tightening can damage threads or crack components.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-balance-scale"></i>
+                                <strong>Proper Torque:</strong> Tighten until snug, then give an additional quarter turn.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instruction 5 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">5</div>
+                        <div class="instruction-content">
+                            <h4>Verify Assembly</h4>
+                            <p>Compare your assembly with Figure 1.5. Check all connections, alignments, and clearances.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-check-double"></i>
+                                <strong>Quality Check:</strong> Perform a visual inspection from multiple angles to ensure everything is properly assembled.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instruction 6 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">6</div>
+                        <div class="instruction-content">
+                            <h4>Test Functionality (If Applicable)</h4>
+                            <p>If this step involves moving parts or electronics, perform a basic functionality test before proceeding.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-play-circle"></i>
+                                <strong>Test Protocol:</strong> Apply power briefly and check for smooth operation without binding or unusual noises.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools and Materials Section -->
+            <div class="tools-materials">
+                <div class="tools-card">
+                    <h3><i class="fas fa-tools"></i> Required Tools</h3>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-screwdriver"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Phillips Screwdriver</strong>
+                                <small>Size #1</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-wrench"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Hex Key Set</strong>
+                                <small>1.5mm - 3mm</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-ruler"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Digital Caliper</strong>
+                                <small>For precise measurements</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-cut"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Flush Cutters</strong>
+                                <small>For trimming wires</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="materials-card">
+                    <h3><i class="fas fa-box-open"></i> Required Materials</h3>
+                    <div class="materials-list">
+                        <div class="material-item">
+                            <span>3D Printed Parts</span>
+                            <span>{PART_COUNT} pieces</span>
+                        </div>
+                        <div class="material-item">
+                            <span>M3 Screws</span>
+                            <span>{SCREW_COUNT} pieces</span>
+                        </div>
+                        <div class="material-item">
+                            <span>M3 Nuts</span>
+                            <span>{NUT_COUNT} pieces</span>
+                        </div>
+                        <div class="material-item">
+                            <span>Tendon Wires</span>
+                            <span>{WIRE_LENGTH} mm</span>
+                        </div>
+                        <div class="material-item">
+                            <span>PTFE Tubes</span>
+                            <span>{TUBE_LENGTH} mm</span>
+                        </div>
+                        <div class="material-item">
+                            <span>Servo Motors</span>
+                            <span>{SERVO_COUNT} units</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Notes -->
+            <div class="notes-section">
+                <h3><i class="fas fa-sticky-note"></i> Technical Notes</h3>
+                <p><strong>Tolerance Specifications:</strong> All 3D printed parts are designed with a 0.2mm tolerance. If parts don't fit, check for printing defects or excess material.</p>
+                <p><strong>Torque Specifications:</strong> M3 screws should be tightened to 0.6-0.8 N·m. Avoid over-tightening to prevent stripping threads in plastic parts.</p>
+                <p><strong>Electrical Safety:</strong> Always disconnect power when making or modifying electrical connections. Double-check polarity before applying power.</p>
+                <p><strong>Testing Protocol:</strong> After assembly, perform a full range of motion test without load before applying operational forces.</p>
+            </div>
+
+            <!-- Video Reference -->
+            <div class="video-section">
+                <div class="section-header">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Reference</h3>
+                </div>
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <h4>Step 21 Video Tutorial</h4>
+                        <p>Video duration: {VIDEO_DURATION} minutes</p>
+                        <p>Click to play video tutorial for this step</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step Navigation -->
+            <div class="step-navigation">
+                <a href="step20.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous Step
+                </a>
+                
+                <div class="step-info">
+                    <div class="current">Step 21: Spool Assembly and Servo Connection</div>
+                    <div class="next">Next: PCB to Tower Connection</div>
+                </div>
+                
+                <button class="completion-btn" id="completion-btn">
+                    <i class="far fa-check-circle"></i>
+                    Mark as Complete
+                </button>
+                
+                <a href="step22.html" class="nav-button next">
+                    Next Step
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SENS_HAND Project</h3>
+                <p>SENS_HAND v1 is an open-source dexterous robotic hand designed for research, education, and development in robotics and prosthetics.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="../index.html">Home</a>
+                <a href="../index.html#tutorial">Tutorial Overview</a>
+                <a href="../index.html#downloads">Downloads</a>
+                <a href="../index.html#faq">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Step Navigation</h3>
+                <a href="step00.html">Steps 00-02</a>
+                <a href="step03.html">Steps 03-07</a>
+                <a href="step08.html">Steps 08-19</a>
+                <a href="step20.html">Steps 20-29</a>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../community.html">Community Forum</a>
+                <a href="../donate.html">Support Project</a>
+                <a href="../report-issue.html">Report Issue</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="license-info">
+                <p>SENS_HAND v1 is released under the MIT License. All documentation and tutorials are licensed under Creative Commons Attribution 4.0 International.</p>
+            </div>
+            <p>&copy; 2024 SENS_HAND Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Image Zoom -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img class="modal-image" src="" alt="Enlarged view">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for step page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get current step number from URL or set default
+            const currentStep = parseInt("21") || 0;
+            const totalSteps = 29;
+            
+            // Calculate progress
+            const progressPercent = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-fill').style.width = `${progressPercent}%`;
+            
+            // Set up image modal
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.querySelector('.modal-image');
+            const closeModal = document.querySelector('.close-modal');
+            const stepImages = document.querySelectorAll('.step-image');
+            
+            // Open modal when clicking on any image
+            stepImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    modalImage.src = this.src;
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Mark step as complete
+            const completionBtn = document.getElementById('completion-btn');
+            completionBtn.addEventListener('click', function() {
+                if (this.classList.contains('completed')) {
+                    this.classList.remove('completed');
+                    this.innerHTML = '<i class="far fa-check-circle"></i> Mark as Complete';
+                    localStorage.removeItem(`step-${currentStep}-completed`);
+                } else {
+                    this.classList.add('completed');
+                    this.innerHTML = '<i class="fas fa-check-circle"></i> Completed';
+                    localStorage.setItem(`step-${currentStep}-completed`, 'true');
+                }
+            });
+            
+            // Check if step was previously marked as complete
+            if (localStorage.getItem(`step-${currentStep}-completed`) === 'true') {
+                completionBtn.classList.add('completed');
+                completionBtn.innerHTML = '<i class="fas fa-check-circle"></i> Completed';
+            }
+            
+            // Update navigation based on current step
+            const prevBtn = document.querySelector('.nav-button.prev');
+            const nextBtn = document.querySelector('.nav-button.next');
+            
+            // Disable previous button if on first step
+            if (currentStep === 0) {
+                prevBtn.style.display = 'none';
+            }
+            
+            // Change next button text if on last step
+            if (currentStep === 29) {
+                nextBtn.innerHTML = 'Finish Tutorial <i class="fas fa-flag-checkered"></i>';
+            }
+            
+            // Set active state in sidebar
+            const stepItems = document.querySelectorAll('.step-item');
+            stepItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.textContent.includes(`Step ${currentStep}`) || 
+                    item.textContent.startsWith(`${currentStep}:`)) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                // Escape to close modal
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+                
+                // Arrow keys for navigation when modal is closed
+                if (modal.style.display !== 'flex') {
+                    if (e.key === 'ArrowLeft' && currentStep > 0) {
+                        window.location.href = `step${currentStep - 1}.html`;
+                    }
+                    if (e.key === 'ArrowRight' && currentStep < 29) {
+                        window.location.href = `step${currentStep + 1}.html`;
+                    }
+                }
+            });
+            
+            // Initialize tooltips (if any)
+            const tooltips = document.querySelectorAll('[data-tooltip]');
+            tooltips.forEach(tooltip => {
+                tooltip.addEventListener('mouseenter', function() {
+                    const tooltipText = this.getAttribute('data-tooltip');
+                    // You can implement a custom tooltip system here if needed
+                });
+            });
+        });
+    </script>
+</body>
+</html>
