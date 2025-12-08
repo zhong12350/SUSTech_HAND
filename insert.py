@@ -2,118 +2,95 @@ import os
 import re
 from bs4 import BeautifulSoup
 
-# Path configuration
-STEPS_DIR = r"./steps"
-IMAGES_DIR = r"./assets/images"
+# 路径配置
+STEPS_DIR = "./steps"
+IMAGES_DIR = "./assets/images"
 
-# step10.html ~ step19.html
+# 处理步骤 10-19
 target_steps = list(range(10, 20))
 
-# Template - structure for each image block
+# 图片块模板
 def generate_image_block(img_path, step, index):
-    return f'''
-    <div class="image-item">
+    return f'''<div class="image-item">
         <img src="{img_path}" alt="Step {step} - Image {index}" class="step-image" data-image="{index}">
         <div class="image-caption">
-            <h4>Figure {step}.{index}: Image {index} Description</h4>
-            <p>Description for step {step} image {index}. Replace with actual description.</p>
+            <h4>Figure {step}.{index}: Image {index}</h4>
+            <p>Description for step {step} image {index}</p>
         </div>
-    </div>
-    '''
+    </div>'''
 
-# -------------------------------------------------------------------
-
-print(f"Steps directory: {STEPS_DIR}")
-print(f"Images directory: {IMAGES_DIR}")
-print(f"Processing steps: {target_steps[0]} ~ {target_steps[-1]}")
+print(f"处理步骤: {target_steps[0]} ~ {target_steps[-1]}")
 print("-" * 50)
 
 for step in target_steps:
-    step_file = os.path.join(STEPS_DIR, f"step{step:02d}.html")
+    step_file = f"{STEPS_DIR}/step{step:02d}.html"
     
     if not os.path.exists(step_file):
-        print(f"❌ File not found: {step_file}")
+        print(f"❌ 文件不存在: {step_file}")
         continue
 
-    print(f"Processing: {step_file}")
+    print(f"处理: step{step:02d}.html")
 
     try:
-        # Read HTML with proper encoding detection
+        # 读取HTML
         with open(step_file, "r", encoding="utf-8") as f:
             html = f.read()
 
-        # Use 'html.parser' for better compatibility
         soup = BeautifulSoup(html, "html.parser")
 
-        # Find image-gallery div
+        # 找到image-gallery区域
         gallery = soup.find("div", class_="image-gallery")
-        if gallery is None:
-            print(f"⚠ Image gallery not found in: {step_file}")
+        if not gallery:
+            print(f"⚠ 未找到image-gallery区域")
             continue
 
-        # Clear ALL children of gallery (not just text)
+        # 清空gallery中的所有内容
         for child in list(gallery.children):
             child.decompose()
 
-        # Find images for this step
+        # 查找该步骤的所有图片
         image_files = []
         if os.path.exists(IMAGES_DIR):
-            for fname in sorted(os.listdir(IMAGES_DIR)):
-                # Match substep_xx_xx with any extension
-                pattern = rf"^substep_{step}_\d+.*\.(png|jpg|jpeg|gif|webp)$"
-                if re.match(pattern, fname, re.IGNORECASE):
-                    image_files.append(fname)
+            for filename in os.listdir(IMAGES_DIR):
+                # 匹配 substep_10_01.jpg 或 substep_10_01.png 等格式
+                if filename.startswith(f"substep_{step}_") and filename.lower().endswith(('.jpg', '.jpeg', '.png', '.gif')):
+                    image_files.append(filename)
         
-        print(f"  - Found {len(image_files)} images: {image_files if image_files else 'None'}")
+        # 按数字排序 (substep_10_01, substep_10_02, ...)
+        image_files.sort(key=lambda x: int(re.search(r'substep_\d+_(\d+)', x).group(1)) if re.search(r'substep_\d+_(\d+)', x) else 0)
+        
+        print(f"  找到 {len(image_files)} 张图片: {image_files}")
 
-        # If no images found, check for any images in step10 directory
-        if not image_files:
-            step_img_dir = os.path.join(IMAGES_DIR, f"step{step}")
-            if os.path.exists(step_img_dir):
-                for fname in sorted(os.listdir(step_img_dir)):
-                    if fname.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp')):
-                        image_files.append(f"step{step}/{fname}")
-                print(f"  - Found {len(image_files)} images in subdirectory")
-        
-        # Insert image blocks
-        if image_files:
-            for i, img in enumerate(image_files, start=1):
-                img_path = f"../assets/images/{img}"
-                # Create new soup for each block to avoid parsing issues
-                block_soup = BeautifulSoup(generate_image_block(img_path, step, i), 'html.parser')
-                gallery.append(block_soup)
-        else:
-            print(f"  ⚠ No images found. Gallery will be empty.")
-        
-        # Write back preserving original formatting as much as possible
-        output = str(soup)
-        
-        # Ensure proper HTML structure
-        output = output.replace('<html>', '<!DOCTYPE html>\n<html>')
-        
-        # Write to file
+        # 插入图片块
+        for i, img_filename in enumerate(image_files, 1):
+            # 使用正确的路径格式: ../assets/images/substep_10_01.jpg
+            img_path = f"../assets/images/{img_filename}"
+            block_html = generate_image_block(img_path, step, i)
+            block_soup = BeautifulSoup(block_html, "html.parser")
+            gallery.append(block_soup)
+
+        # 写入文件 - 保持原格式，不使用prettify
         with open(step_file, "w", encoding="utf-8") as f:
+            # 直接写入原始的HTML字符串，保持格式
+            output = str(soup)
             f.write(output)
         
-        print(f"  ✓ Updated successfully: step{step:02d}.html")
-        
+        print(f"  ✓ 更新完成")
+
     except Exception as e:
-        print(f"  ✗ Error processing {step_file}: {str(e)}")
-        import traceback
-        traceback.print_exc()
+        print(f"  ✗ 错误: {str(e)}")
 
-print("\n🎉 Processing completed!")
-print(f"Total steps processed: {len(target_steps)}")
-
-# Summary
-print("\n" + "="*50)
-print("SUMMARY:")
-print("="*50)
+print("\n✅ 所有步骤处理完成!")
+print("\n检查生成的图片路径:")
 for step in target_steps:
-    step_file = os.path.join(STEPS_DIR, f"step{step:02d}.html")
+    step_file = f"{STEPS_DIR}/step{step:02d}.html"
     if os.path.exists(step_file):
-        # Count image blocks in the file
         with open(step_file, "r", encoding="utf-8") as f:
             content = f.read()
-            image_count = content.count('class="image-item"')
-            print(f"Step {step:02d}: {image_count} image blocks")
+            # 统计image-item数量
+            count = content.count('class="image-item"')
+            # 查找图片路径
+            img_paths = re.findall(r'src="(\.\./assets/images/substep_\d+_\d+\.\w+)"', content)
+            print(f"Step {step:02d}: {count} 张图片")
+            if img_paths:
+                print(f"  示例路径: {img_paths[0]}")
