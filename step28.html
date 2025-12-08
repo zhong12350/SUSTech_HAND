@@ -297,36 +297,20 @@
             margin-bottom: 40px;
         }
 
-        .image-item {
-            background-color: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
+        
 
         .image-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .step-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+        
 
         .step-image:hover {
             transform: scale(1.02);
         }
 
-        .image-caption {
-            padding: 15px 20px;
-            background-color: #f8f9fa;
-            border-top: 1px solid #eee;
-        }
+        
 
         .image-caption h4 {
             color: var(--primary-color);
@@ -823,7 +807,37 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    
+
+.image-item {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.step-image {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.image-caption {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+</style>
 </head>
 <body>
     <!-- Top Navigation Bar -->
