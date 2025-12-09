@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SENS_HAND v1 Dexterous Hand - Step 00</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENS_HAND v1 Dexterous Hand - Step 00</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
         /* 基于index.html的CSS，进行步骤页面扩展 */
         :root {
             --primary-color: #1a5276;
@@ -841,370 +840,431 @@
 </style>
 </head>
 <body>
-<!-- Top Navigation Bar -->
-<header class="top-nav">
-<div class="brand">
-<div class="brand-logo">
-<i class="fas fa-robot"></i>
-</div>
-<div class="brand-text">
-<h1>SENS_HAND Dexterous Hand</h1>
-<p>Step 00: About Tendons and Knots</p>
-</div>
-</div>
-<div class="nav-links">
-<a href="../index.html"><i class="fas fa-home"></i> Home</a>
-<a href="../index.html#tutorial"><i class="fas fa-book"></i> Tutorial</a>
-<a href="../index.html#resources"><i class="fas fa-download"></i> Downloads</a>
-<a href="../index.html#help"><i class="fas fa-question-circle"></i> Help</a>
-</div>
-</header>
-<!-- Main Container -->
-<div class="container">
-<!-- Sidebar Navigation -->
-<div class="sidebar">
-<div class="steps-nav">
-<div class="steps-section">
-<h3>Part 1: Tendons and Knots</h3>
-<a class="step-item active" href="step00.html">00: About Tendons and Knots</a>
-<a class="step-item" href="step01.html">01: Fingertip Tendon Routing</a>
-<a class="step-item" href="step02.html">02: PP Tendon Routing</a>
-</div>
-<div class="steps-section">
-<h3>Part 2: Finger Assembly</h3>
-<a class="step-item" href="step03.html">03: Abduction Routing</a>
-<a class="step-item" href="step04.html">04: Thumb Abduction Tendon Routing</a>
-<a class="step-item" href="step05.html">05: Finger Assembly</a>
-<a class="step-item" href="step06.html">06: About Tendons and Knots</a>
-<a class="step-item" href="step07.html">07: Thumb Assembly</a>
-</div>
-<div class="steps-section">
-<h3>Part 3: Wrist and Main Body</h3>
-<a class="step-item" href="step08.html">08: Skin to Carpal Bones</a>
-<a class="step-item" href="step09.html">09: PTFE Tubes in Carpal</a>
-<a class="step-item" href="step10.html">10: Index to Carpal Assembly</a>
-<a class="step-item" href="step11.html">11: Thumb to Carpal Assembly</a>
-<a class="step-item" href="step12.html">12: Carpal Gears and Rods</a>
-<a class="step-item" href="step13.html">13: PTFE Tubes in Top Tower</a>
-<a class="step-item" href="step14.html">14: Wrist Servo Assembly</a>
-<a class="step-item" href="step15.html">15: Top Tower Strap Tension Screw</a>
-<a class="step-item" href="step16.html">16: Wrist Servo Placement</a>
-<a class="step-item" href="step17.html">17: Carpal to Top Tower</a>
-<a class="step-item" href="step18.html">18: Carpal Bearing Cover</a>
-<a class="step-item" href="step19.html">19: Tensioning Wrist Strap</a>
-</div>
-<div class="steps-section">
-<h3>Part 4: Electronics and Final Assembly</h3>
-<a class="step-item" href="step20.html">20: Setting Up Dupomixels</a>
-<a class="step-item" href="step21.html">21: Spool Assembly and Servo Connection</a>
-<a class="step-item" href="step22.html">22: PCB to Tower Connection</a>
-<a class="step-item" href="step23.html">23: Servo to Tower Connection</a>
-<a class="step-item" href="step24.html">24: Rod Stopper to Tower</a>
-<a class="step-item" href="step25.html">25: Carpal and Top Tower to Bottom Tower</a>
-<a class="step-item" href="step26.html">26: Tendon Wrapping</a>
-<a class="step-item" href="step27.html">27: Magnets on Tower and Case</a>
-<a class="step-item" href="step28.html">28: SENS_HAND Letters on Case</a>
-<a class="step-item" href="step29.html">29: Complete Assembly</a>
-</div>
-</div>
-</div>
-<!-- Main Content Area -->
-<main class="main-content">
-<!-- Step Header -->
-<div class="step-header">
-<div class="step-meta">
-<span class="step-number">Step 00</span>
-<div class="step-progress">
-<div class="progress-bar">
-<div class="progress-fill" id="progress-fill" style="width: 0.0%"></div>
-</div>
-<span class="progress-text" id="progress-text">00/29</span>
-</div>
-</div>
-<h1>About Tendons and Knots</h1>
-<div class="step-tags">
-<span class="tag primary">Difficulty: {DIFFICULTY}</span>
-<span class="tag secondary">Time: {TIME_ESTIMATE}</span>
-<span class="tag accent">Tools: {TOOLS}</span>
-<span class="tag success">Part: {PART_NUMBER}</span>
-</div>
-</div>
-<!-- Warning Alert -->
-<div class="alert-box warning">
-<i class="fas fa-exclamation-triangle"></i>
-<div class="alert-content">
-<h4>Important Safety Notice</h4>
-<p>Always use proper tools and follow safety procedures when working with small parts and electronics.</p>
-</div>
-</div>
-<!-- Image Gallery Section - 6 Images with Captions -->
-<div class="image-gallery"><div class="image-item">
-<img alt="Step 12 - Image 1" class="step-image" data-image="1" src="assets/images/substep_12_04.png"/>
-<div class="image-caption">
-<h4>Figure 12.1: Image 1</h4>
-<p>Description for step 12 image 1</p>
-</div>
-</div><div class="image-item">
-<img alt="Step 12 - Image 2" class="step-image" data-image="2" src="assets/images/substep_12_05.png"/>
-<div class="image-caption">
-<h4>Figure 12.2: Image 2</h4>
-<p>Description for step 12 image 2</p>
-</div>
-</div><div class="image-item">
-<img alt="Step 12 - Image 3" class="step-image" data-image="3" src="assets/images/substep_12_06.png"/>
-<div class="image-caption">
-<h4>Figure 12.3: Image 3</h4>
-<p>Description for step 12 image 3</p>
-</div>
-</div></div>
-<!-- Step-by-Step Instructions -->
-<div class="instruction-section">
-<div class="section-header">
-<i class="fas fa-list-ol"></i>
-<h3>Step-by-Step Instructions</h3>
-</div>
-<div class="instruction-grid">
-<!-- Instruction 1 -->
-<div class="instruction-item">
-<div class="instruction-number">1</div>
-<div class="instruction-content">
-<h4>Prepare Components</h4>
-<p>Gather all components listed in the tools and materials section. Lay them out on a clean, well-lit workspace.</p>
-<div class="tip-box">
-<i class="fas fa-lightbulb"></i>
-<strong>Tip:</strong> Use an anti-static mat when handling electronic components to prevent damage from static electricity.
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="brand">
+            <div class="brand-logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="brand-text">
+                <h1>SENS_HAND Dexterous Hand</h1>
+                <p>Step 00: About Tendons and Knots</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="../index.html#tutorial"><i class="fas fa-book"></i> Tutorial</a>
+            <a href="../index.html#resources"><i class="fas fa-download"></i> Downloads</a>
+            <a href="../index.html#help"><i class="fas fa-question-circle"></i> Help</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="steps-nav">
+                <div class="steps-section">
+                    <h3>Part 1: Tendons and Knots</h3>
+                    <a href="step00.html" class="step-item active">00: About Tendons and Knots</a>
+                    <a href="step01.html" class="step-item ">01: Fingertip Tendon Routing</a>
+                    <a href="step02.html" class="step-item ">02: PP Tendon Routing</a>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 2: Finger Assembly</h3>
+                    <a href="step03.html" class="step-item ">03: Abduction Routing</a>
+                    <a href="step04.html" class="step-item ">04: Thumb Abduction Tendon Routing</a>
+                    <a href="step05.html" class="step-item ">05: Finger Assembly</a>
+                    <a href="step06.html" class="step-item ">06: About Tendons and Knots</a>
+                    <a href="step07.html" class="step-item ">07: Thumb Assembly</a>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 3: Wrist and Main Body</h3>
+                    <a href="step08.html" class="step-item ">08: Skin to Carpal Bones</a>
+                    <a href="step09.html" class="step-item ">09: PTFE Tubes in Carpal</a>
+                    <a href="step10.html" class="step-item ">10: Index to Carpal Assembly</a>
+                    <a href="step11.html" class="step-item ">11: Thumb to Carpal Assembly</a>
+                    <a href="step12.html" class="step-item ">12: Carpal Gears and Rods</a>
+                    <a href="step13.html" class="step-item ">13: PTFE Tubes in Top Tower</a>
+                    <a href="step14.html" class="step-item ">14: Wrist Servo Assembly</a>
+                    <a href="step15.html" class="step-item ">15: Top Tower Strap Tension Screw</a>
+                    <a href="step16.html" class="step-item ">16: Wrist Servo Placement</a>
+                    <a href="step17.html" class="step-item ">17: Carpal to Top Tower</a>
+                    <a href="step18.html" class="step-item ">18: Carpal Bearing Cover</a>
+                    <a href="step19.html" class="step-item ">19: Tensioning Wrist Strap</a>
+                </div>
+
+                <div class="steps-section">
+                    <h3>Part 4: Electronics and Final Assembly</h3>
+                    <a href="step20.html" class="step-item ">20: Setting Up Dupomixels</a>
+                    <a href="step21.html" class="step-item ">21: Spool Assembly and Servo Connection</a>
+                    <a href="step22.html" class="step-item ">22: PCB to Tower Connection</a>
+                    <a href="step23.html" class="step-item ">23: Servo to Tower Connection</a>
+                    <a href="step24.html" class="step-item ">24: Rod Stopper to Tower</a>
+                    <a href="step25.html" class="step-item ">25: Carpal and Top Tower to Bottom Tower</a>
+                    <a href="step26.html" class="step-item ">26: Tendon Wrapping</a>
+                    <a href="step27.html" class="step-item ">27: Magnets on Tower and Case</a>
+                    <a href="step28.html" class="step-item ">28: SENS_HAND Letters on Case</a>
+                    <a href="step29.html" class="step-item ">29: Complete Assembly</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Step Header -->
+            <div class="step-header">
+                <div class="step-meta">
+                    <span class="step-number">Step 00</span>
+                    <div class="step-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill" style="width: 0.0%"></div>
+                        </div>
+                        <span class="progress-text" id="progress-text">00/29</span>
+                    </div>
+                </div>
+                <h1>About Tendons and Knots</h1>
+                <div class="step-tags">
+                    <span class="tag primary">Difficulty: {DIFFICULTY}</span>
+                    <span class="tag secondary">Time: {TIME_ESTIMATE}</span>
+                    <span class="tag accent">Tools: {TOOLS}</span>
+                    <span class="tag success">Part: {PART_NUMBER}</span>
+                </div>
+            </div>
+
+            <!-- Warning Alert -->
+            <div class="alert-box warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="alert-content">
+                    <h4>Important Safety Notice</h4>
+                    <p>Always use proper tools and follow safety procedures when working with small parts and electronics.</p>
+                </div>
+            </div>
+
+            <!-- Image Gallery Section - 6 Images with Captions -->
+            <div class="image-gallery">
+                <!-- Image 1 -->
+                <div class="image-item">
+                    <img src="../assets/images/step00/image1.jpg" alt="Step 00 - Image 1" class="step-image" data-image="1">
+                    <div class="image-caption">
+                        <h4>Figure 1.1: Primary Assembly View</h4>
+                        <p>This image shows the main components and their orientation before assembly. Note the alignment marks and reference points.</p>
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="image-item">
+                    <img src="../assets/images/step00/image2.jpg" alt="Step 00 - Image 2" class="step-image" data-image="2">
+                    <div class="image-caption">
+                        <h4>Figure 1.2: Component Placement</h4>
+                        <p>Detailed view showing the exact placement of each component. Pay attention to the orientation of asymmetrical parts.</p>
+                    </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="image-item">
+                    <img src="../assets/images/step00/image3.jpg" alt="Step 00 - Image 3" class="step-image" data-image="3">
+                    <div class="image-caption">
+                        <h4>Figure 1.3: Connection Details</h4>
+                        <p>Close-up view of connection points and interfaces. Ensure all connections are secure before proceeding.</p>
+                    </div>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="image-item">
+                    <img src="../assets/images/step00/image4.jpg" alt="Step 00 - Image 4" class="step-image" data-image="4">
+                    <div class="image-caption">
+                        <h4>Figure 1.4: Tool Usage</h4>
+                        <p>Demonstration of proper tool usage. Using the correct tools prevents damage to components.</p>
+                    </div>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="image-item">
+                    <img src="../assets/images/step00/image5.jpg" alt="Step 00 - Image 5" class="step-image" data-image="5">
+                    <div class="image-caption">
+                        <h4>Figure 1.5: Verification Check</h4>
+                        <p>Visual verification of correct assembly. Compare your work with this reference image.</p>
+                    </div>
+                </div>
+
+                <!-- Image 6 -->
+                <div class="image-item">
+                    <img src="../assets/images/step00/image6.jpg" alt="Step 00 - Image 6" class="step-image" data-image="6">
+                    <div class="image-caption">
+                        <h4>Figure 1.6: Final Result</h4>
+                        <p>Expected appearance after completing this step. Ensure your assembly matches this result before continuing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step-by-Step Instructions -->
+            <div class="instruction-section">
+                <div class="section-header">
+                    <i class="fas fa-list-ol"></i>
+                    <h3>Step-by-Step Instructions</h3>
+                </div>
+                
+                <div class="instruction-grid">
+                    <!-- Instruction 1 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">1</div>
+                        <div class="instruction-content">
+                            <h4>Prepare Components</h4>
+                            <p>Gather all components listed in the tools and materials section. Lay them out on a clean, well-lit workspace.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Tip:</strong> Use an anti-static mat when handling electronic components to prevent damage from static electricity.
                             </div>
-</div>
-</div>
-<!-- Instruction 2 -->
-<div class="instruction-item">
-<div class="instruction-number">2</div>
-<div class="instruction-content">
-<h4>Identify Orientation Marks</h4>
-<p>Examine each component for orientation marks, notches, or alignment indicators. Refer to Figure 1.1 for reference.</p>
-<div class="tip-box">
-<i class="fas fa-exclamation-circle"></i>
-<strong>Important:</strong> Incorrect orientation may prevent proper assembly or damage components.
+                        </div>
+                    </div>
+
+                    <!-- Instruction 2 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">2</div>
+                        <div class="instruction-content">
+                            <h4>Identify Orientation Marks</h4>
+                            <p>Examine each component for orientation marks, notches, or alignment indicators. Refer to Figure 1.1 for reference.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <strong>Important:</strong> Incorrect orientation may prevent proper assembly or damage components.
                             </div>
-</div>
-</div>
-<!-- Instruction 3 -->
-<div class="instruction-item">
-<div class="instruction-number">3</div>
-<div class="instruction-content">
-<h4>Begin Assembly</h4>
-<p>Start assembling components as shown in Figure 1.2. Apply gentle pressure and ensure proper alignment before securing connections.</p>
-<div class="tip-box">
-<i class="fas fa-tools"></i>
-<strong>Tool Note:</strong> Use the appropriate screwdriver size to avoid stripping screw heads.
+                        </div>
+                    </div>
+
+                    <!-- Instruction 3 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">3</div>
+                        <div class="instruction-content">
+                            <h4>Begin Assembly</h4>
+                            <p>Start assembling components as shown in Figure 1.2. Apply gentle pressure and ensure proper alignment before securing connections.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-tools"></i>
+                                <strong>Tool Note:</strong> Use the appropriate screwdriver size to avoid stripping screw heads.
                             </div>
-</div>
-</div>
-<!-- Instruction 4 -->
-<div class="instruction-item">
-<div class="instruction-number">4</div>
-<div class="instruction-content">
-<h4>Secure Connections</h4>
-<p>Tighten all connections firmly but not excessively. Over-tightening can damage threads or crack components.</p>
-<div class="tip-box">
-<i class="fas fa-balance-scale"></i>
-<strong>Proper Torque:</strong> Tighten until snug, then give an additional quarter turn.
+                        </div>
+                    </div>
+
+                    <!-- Instruction 4 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">4</div>
+                        <div class="instruction-content">
+                            <h4>Secure Connections</h4>
+                            <p>Tighten all connections firmly but not excessively. Over-tightening can damage threads or crack components.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-balance-scale"></i>
+                                <strong>Proper Torque:</strong> Tighten until snug, then give an additional quarter turn.
                             </div>
-</div>
-</div>
-<!-- Instruction 5 -->
-<div class="instruction-item">
-<div class="instruction-number">5</div>
-<div class="instruction-content">
-<h4>Verify Assembly</h4>
-<p>Compare your assembly with Figure 1.5. Check all connections, alignments, and clearances.</p>
-<div class="tip-box">
-<i class="fas fa-check-double"></i>
-<strong>Quality Check:</strong> Perform a visual inspection from multiple angles to ensure everything is properly assembled.
+                        </div>
+                    </div>
+
+                    <!-- Instruction 5 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">5</div>
+                        <div class="instruction-content">
+                            <h4>Verify Assembly</h4>
+                            <p>Compare your assembly with Figure 1.5. Check all connections, alignments, and clearances.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-check-double"></i>
+                                <strong>Quality Check:</strong> Perform a visual inspection from multiple angles to ensure everything is properly assembled.
                             </div>
-</div>
-</div>
-<!-- Instruction 6 -->
-<div class="instruction-item">
-<div class="instruction-number">6</div>
-<div class="instruction-content">
-<h4>Test Functionality (If Applicable)</h4>
-<p>If this step involves moving parts or electronics, perform a basic functionality test before proceeding.</p>
-<div class="tip-box">
-<i class="fas fa-play-circle"></i>
-<strong>Test Protocol:</strong> Apply power briefly and check for smooth operation without binding or unusual noises.
+                        </div>
+                    </div>
+
+                    <!-- Instruction 6 -->
+                    <div class="instruction-item">
+                        <div class="instruction-number">6</div>
+                        <div class="instruction-content">
+                            <h4>Test Functionality (If Applicable)</h4>
+                            <p>If this step involves moving parts or electronics, perform a basic functionality test before proceeding.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-play-circle"></i>
+                                <strong>Test Protocol:</strong> Apply power briefly and check for smooth operation without binding or unusual noises.
                             </div>
-</div>
-</div>
-</div>
-</div>
-<!-- Tools and Materials Section -->
-<div class="tools-materials">
-<div class="tools-card">
-<h3><i class="fas fa-tools"></i> Required Tools</h3>
-<div class="tools-list">
-<div class="tool-item">
-<div class="tool-icon">
-<i class="fas fa-screwdriver"></i>
-</div>
-<div class="tool-info">
-<strong>Phillips Screwdriver</strong>
-<small>Size #1</small>
-</div>
-</div>
-<div class="tool-item">
-<div class="tool-icon">
-<i class="fas fa-wrench"></i>
-</div>
-<div class="tool-info">
-<strong>Hex Key Set</strong>
-<small>1.5mm - 3mm</small>
-</div>
-</div>
-<div class="tool-item">
-<div class="tool-icon">
-<i class="fas fa-ruler"></i>
-</div>
-<div class="tool-info">
-<strong>Digital Caliper</strong>
-<small>For precise measurements</small>
-</div>
-</div>
-<div class="tool-item">
-<div class="tool-icon">
-<i class="fas fa-cut"></i>
-</div>
-<div class="tool-info">
-<strong>Flush Cutters</strong>
-<small>For trimming wires</small>
-</div>
-</div>
-</div>
-</div>
-<div class="materials-card">
-<h3><i class="fas fa-box-open"></i> Required Materials</h3>
-<div class="materials-list">
-<div class="material-item">
-<span>3D Printed Parts</span>
-<span>{PART_COUNT} pieces</span>
-</div>
-<div class="material-item">
-<span>M3 Screws</span>
-<span>{SCREW_COUNT} pieces</span>
-</div>
-<div class="material-item">
-<span>M3 Nuts</span>
-<span>{NUT_COUNT} pieces</span>
-</div>
-<div class="material-item">
-<span>Tendon Wires</span>
-<span>{WIRE_LENGTH} mm</span>
-</div>
-<div class="material-item">
-<span>PTFE Tubes</span>
-<span>{TUBE_LENGTH} mm</span>
-</div>
-<div class="material-item">
-<span>Servo Motors</span>
-<span>{SERVO_COUNT} units</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Technical Notes -->
-<div class="notes-section">
-<h3><i class="fas fa-sticky-note"></i> Technical Notes</h3>
-<p><strong>Tolerance Specifications:</strong> All 3D printed parts are designed with a 0.2mm tolerance. If parts don't fit, check for printing defects or excess material.</p>
-<p><strong>Torque Specifications:</strong> M3 screws should be tightened to 0.6-0.8 N·m. Avoid over-tightening to prevent stripping threads in plastic parts.</p>
-<p><strong>Electrical Safety:</strong> Always disconnect power when making or modifying electrical connections. Double-check polarity before applying power.</p>
-<p><strong>Testing Protocol:</strong> After assembly, perform a full range of motion test without load before applying operational forces.</p>
-</div>
-<!-- Video Reference -->
-<div class="video-section">
-<div class="section-header">
-<i class="fas fa-video"></i>
-<h3>Video Reference</h3>
-</div>
-<div class="video-container">
-<div class="video-placeholder">
-<i class="fas fa-play-circle"></i>
-<h4>Step 00 Video Tutorial</h4>
-<p>Video duration: {VIDEO_DURATION} minutes</p>
-<p>Click to play video tutorial for this step</p>
-</div>
-</div>
-</div>
-<!-- Step Navigation -->
-<div class="step-navigation">
-<a class="nav-button prev" href="step00.html">
-<i class="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools and Materials Section -->
+            <div class="tools-materials">
+                <div class="tools-card">
+                    <h3><i class="fas fa-tools"></i> Required Tools</h3>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-screwdriver"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Phillips Screwdriver</strong>
+                                <small>Size #1</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-wrench"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Hex Key Set</strong>
+                                <small>1.5mm - 3mm</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-ruler"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Digital Caliper</strong>
+                                <small>For precise measurements</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-cut"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Flush Cutters</strong>
+                                <small>For trimming wires</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="materials-card">
+                    <h3><i class="fas fa-box-open"></i> Required Materials</h3>
+                    <div class="materials-list">
+                        <div class="material-item">
+                            <span>3D Printed Parts</span>
+                            <span>{PART_COUNT} pieces</span>
+                        </div>
+                        <div class="material-item">
+                            <span>M3 Screws</span>
+                            <span>{SCREW_COUNT} pieces</span>
+                        </div>
+                        <div class="material-item">
+                            <span>M3 Nuts</span>
+                            <span>{NUT_COUNT} pieces</span>
+                        </div>
+                        <div class="material-item">
+                            <span>Tendon Wires</span>
+                            <span>{WIRE_LENGTH} mm</span>
+                        </div>
+                        <div class="material-item">
+                            <span>PTFE Tubes</span>
+                            <span>{TUBE_LENGTH} mm</span>
+                        </div>
+                        <div class="material-item">
+                            <span>Servo Motors</span>
+                            <span>{SERVO_COUNT} units</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Notes -->
+            <div class="notes-section">
+                <h3><i class="fas fa-sticky-note"></i> Technical Notes</h3>
+                <p><strong>Tolerance Specifications:</strong> All 3D printed parts are designed with a 0.2mm tolerance. If parts don't fit, check for printing defects or excess material.</p>
+                <p><strong>Torque Specifications:</strong> M3 screws should be tightened to 0.6-0.8 N·m. Avoid over-tightening to prevent stripping threads in plastic parts.</p>
+                <p><strong>Electrical Safety:</strong> Always disconnect power when making or modifying electrical connections. Double-check polarity before applying power.</p>
+                <p><strong>Testing Protocol:</strong> After assembly, perform a full range of motion test without load before applying operational forces.</p>
+            </div>
+
+            <!-- Video Reference -->
+            <div class="video-section">
+                <div class="section-header">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Reference</h3>
+                </div>
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <h4>Step 00 Video Tutorial</h4>
+                        <p>Video duration: {VIDEO_DURATION} minutes</p>
+                        <p>Click to play video tutorial for this step</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step Navigation -->
+            <div class="step-navigation">
+                <a href="step00.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i>
                     Previous Step
                 </a>
-<div class="step-info">
-<div class="current">Step 00: About Tendons and Knots</div>
-<div class="next">Next: Fingertip Tendon Routing</div>
-</div>
-<button class="completion-btn" id="completion-btn">
-<i class="far fa-check-circle"></i>
+                
+                <div class="step-info">
+                    <div class="current">Step 00: About Tendons and Knots</div>
+                    <div class="next">Next: Fingertip Tendon Routing</div>
+                </div>
+                
+                <button class="completion-btn" id="completion-btn">
+                    <i class="far fa-check-circle"></i>
                     Mark as Complete
                 </button>
-<a class="nav-button next" href="step01.html">
+                
+                <a href="step01.html" class="nav-button next">
                     Next Step
                     <i class="fas fa-arrow-right"></i>
-</a>
-</div>
-</main>
-</div>
-<!-- Footer -->
-<footer>
-<div class="footer-content">
-<div class="footer-section">
-<h3>SENS_HAND Project</h3>
-<p>SENS_HAND v1 is an open-source dexterous robotic hand designed for research, education, and development in robotics and prosthetics.</p>
-<div class="social-links">
-<a href="#"><i class="fab fa-github"></i></a>
-<a href="#"><i class="fab fa-youtube"></i></a>
-<a href="#"><i class="fab fa-discord"></i></a>
-<a href="#"><i class="fab fa-twitter"></i></a>
-</div>
-</div>
-<div class="footer-section">
-<h3>Quick Links</h3>
-<a href="../index.html">Home</a>
-<a href="../index.html#tutorial">Tutorial Overview</a>
-<a href="../index.html#downloads">Downloads</a>
-<a href="../index.html#faq">FAQ</a>
-</div>
-<div class="footer-section">
-<h3>Step Navigation</h3>
-<a href="step00.html">Steps 00-02</a>
-<a href="step03.html">Steps 03-07</a>
-<a href="step08.html">Steps 08-19</a>
-<a href="step20.html">Steps 20-29</a>
-</div>
-<div class="footer-section">
-<h3>Support</h3>
-<a href="../contact.html">Contact Us</a>
-<a href="../community.html">Community Forum</a>
-<a href="../donate.html">Support Project</a>
-<a href="../report-issue.html">Report Issue</a>
-</div>
-</div>
-<div class="footer-bottom">
-<div class="license-info">
-<p>SENS_HAND v1 is released under the MIT License. All documentation and tutorials are licensed under Creative Commons Attribution 4.0 International.</p>
-</div>
-<p>© 2024 SENS_HAND Project. All rights reserved.</p>
-</div>
-</footer>
-<!-- Modal for Image Zoom -->
-<div class="modal" id="imageModal">
-<div class="modal-content">
-<span class="close-modal">×</span>
-<img alt="Enlarged view" class="modal-image" src=""/>
-</div>
-</div>
-<script>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SENS_HAND Project</h3>
+                <p>SENS_HAND v1 is an open-source dexterous robotic hand designed for research, education, and development in robotics and prosthetics.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="../index.html">Home</a>
+                <a href="../index.html#tutorial">Tutorial Overview</a>
+                <a href="../index.html#downloads">Downloads</a>
+                <a href="../index.html#faq">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Step Navigation</h3>
+                <a href="step00.html">Steps 00-02</a>
+                <a href="step03.html">Steps 03-07</a>
+                <a href="step08.html">Steps 08-19</a>
+                <a href="step20.html">Steps 20-29</a>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../community.html">Community Forum</a>
+                <a href="../donate.html">Support Project</a>
+                <a href="../report-issue.html">Report Issue</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="license-info">
+                <p>SENS_HAND v1 is released under the MIT License. All documentation and tutorials are licensed under Creative Commons Attribution 4.0 International.</p>
+            </div>
+            <p>&copy; 2024 SENS_HAND Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Image Zoom -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img class="modal-image" src="" alt="Enlarged view">
+        </div>
+    </div>
+
+    <script>
         // JavaScript for step page functionality
         document.addEventListener('DOMContentLoaded', function() {
             // Get current step number from URL or set default
