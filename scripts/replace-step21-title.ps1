@@ -1,6 +1,6 @@
 # 执行：在项目根目录运行 `powershell -ExecutionPolicy Bypass -File .\scripts\replace-step21-title.ps1`
 
-$new = 'Removing unnecessary parts from the servo'
+$new = 'Removing Unnecessary Parts from The Servo'
 
 Get-ChildItem -Path (Resolve-Path ..\) -Recurse -Include *.html | ForEach-Object {
     $path = $_.FullName
