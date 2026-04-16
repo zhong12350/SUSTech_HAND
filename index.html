@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENS_HAND Dexterous Robot Hand Assembly Tutorial</title>
+            <meta name="description" content="SENS_HAND v1 assembly website with clearer onboarding, step navigation, and author attribution.">
+    <meta name="author" content="Yunqi Zhong">
+<meta name="description" content="SENS_HAND v1 assembly website with clearer onboarding, step navigation, and author attribution.">
+    <meta name="author" content="Yunqi Zhong">
+<title>SENS_HAND Dexterous Robot Hand Assembly Tutorial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -686,25 +690,226 @@
                 height: 250px;
             }
         }
+    
+        .hero-eyebrow {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            opacity: 0.85;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .secondary-button {
+            background-color: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .author-strip,
+        .author-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-top: 24px;
+            padding: 18px 20px;
+            background: #eef7ff;
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            border-radius: var(--border-radius);
+        }
+
+        .author-strip a,
+        .author-card a {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .resource-section {
+            margin-top: 42px;
+        }
+
+        .section-heading {
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 22px;
+        }
+
+        .faq-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        .carousel-image:focus-visible,
+        .step00-main-image:focus-visible {
+            outline: 3px solid rgba(52, 152, 219, 0.45);
+            outline-offset: 3px;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+    
+        .hero-eyebrow {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            opacity: 0.85;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .secondary-button {
+            background-color: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .author-strip,
+        .author-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-top: 24px;
+            padding: 18px 20px;
+            background: #eef7ff;
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            border-radius: var(--border-radius);
+        }
+
+        .author-strip a,
+        .author-card a {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .resource-section {
+            margin-top: 42px;
+        }
+
+        .section-heading {
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 22px;
+        }
+
+        .faq-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        .carousel-image:focus-visible,
+        .step00-main-image:focus-visible {
+            outline: 3px solid rgba(52, 152, 219, 0.45);
+            outline-offset: 3px;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
     <!-- Top Navigation Bar -->
-    <header class="top-nav">
+            <header class="top-nav">
         <div class="brand">
             <div class="brand-logo">
                 <i class="fas fa-robot"></i>
             </div>
             <div class="brand-text">
                 <h1>SENS_HAND Dexterous Hand</h1>
-                <p>Robot Hand Assembly Tutorial</p>
+                <p>Assembly guide by Yunqi Zhong</p>
             </div>
         </div>
         <div class="nav-links">
             <a href="index.html"><i class="fas fa-home"></i> Home</a>
-            <a href="step00.html"><i class="fas fa-book"></i> Tutorial</a>
-            <a href="#"><i class="fas fa-download"></i> Downloads</a>
-            <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+            <a href="#tutorial"><i class="fas fa-book"></i> Tutorial</a>
+            <a href="#downloads"><i class="fas fa-download"></i> Resources</a>
+            <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="https://zhong12350.github.io/" target="_blank" rel="noopener"><i class="fas fa-user"></i> Yunqi Zhong</a>
         </div>
     </header>
 
@@ -764,73 +969,155 @@
         <!-- Main Content Area -->
         <div class="main-content">
             <!-- Welcome Page -->
-            <div id="welcome-page" class="welcome-container">
+                                    <div id="welcome-page" class="welcome-container">
                 <div class="welcome-header">
-                    <h1>Welcome to SENS_HAND v1 Dexterous Hand!</h1>
-                    <p>All files are ready to start assembling your SENS_HAND v1 Dexterous Hand</p>
-                </div>
-
-                <div class="highlight-box">
-                    <h3><i class="fas fa-info-circle"></i> Important Notice</h3>
-                    <p>The current SENS_HAND v1 release does not include sensors as we are still improving the reliability of the sensor version. The sensor version will be released later this year.</p>
-                </div>
-
-                <div class="welcome-content">
-                    <div class="welcome-card">
-                        <h3><i class="fas fa-tools"></i> Before You Begin</h3>
-                        <p>Before starting assembly, make sure you have all necessary tools and parts ready:</p>
-                        <ul>
-                            <li>Complete SENS_HAND v1 parts kit</li>
-                            <li>Screwdriver set</li>
-                            <li>Pliers</li>
-                            <li>Tweezers</li>
-                            <li>PTFE tubes and tendon wires</li>
-                        </ul>
-                        <p>It's recommended to work on an anti-static mat and keep your workspace clean.</p>
+                    <p class="hero-eyebrow">SENS_HAND v1 Assembly Guide</p>
+                    <h1>Build with a clearer workflow and fewer dead ends</h1>
+                    <p>This homepage is now a practical starting point: prepare tools, review the 4 build phases, then enter the step-by-step guide with clearer expectations and checkpoints.</p>
+                    <div class="hero-actions">
+                        <a href="step00.html" id="start-tutorial" class="cta-button"><i class="fas fa-play"></i> Start Tutorial</a>
+                        <a href="#downloads" class="cta-button secondary-button"><i class="fas fa-download"></i> View Resources</a>
+                        <a href="https://zhong12350.github.io/" target="_blank" rel="noopener" class="cta-button secondary-button"><i class="fas fa-user"></i> Author Homepage</a>
                     </div>
-
-                    <div class="welcome-card">
-                        <h3><i class="fas fa-video"></i> Video Tutorials</h3>
-                        <p>We provide detailed video tutorials to help you better understand the assembly process:</p>
-                        <ul>
-                            <li>Complete assembly process video</li>
-                            <li>Key steps explained in detail</li>
-                            <li>Frequently asked questions</li>
-                            <li>Troubleshooting guide</li>
-                        </ul>
-                        <a href="#" class="cta-button"><i class="fas fa-play-circle"></i> Watch Tutorial Videos</a>
-                    </div>
-
-                    <div class="welcome-card">
-                        <h3><i class="fas fa-file-download"></i> Resource Downloads</h3>
-                        <p>Download the following resources to help with your assembly:</p>
-                        <ul>
-                            <li>3D Printing Files (STL format)</li>
-                            <li>Parts List (BOM)</li>
-                            <li>Assembly Diagrams (PDF)</li>
-                            <li>Firmware and Software</li>
-                        </ul>
-                        <a href="#" class="cta-button"><i class="fas fa-download"></i> Download Resource Package</a>
-                    </div>
-
-                    <div class="welcome-card">
-                        <h3><i class="fas fa-users"></i> Community Support</h3>
-                        <p>Join our community for help and to share your experience:</p>
-                        <ul>
-                            <li>Official Forum</li>
-                            <li>Discord Channel</li>
-                            <li>GitHub Repository</li>
-                            <li>User Project Showcase</li>
-                        </ul>
-                        <a href="#" class="cta-button"><i class="fas fa-comments"></i> Join Community</a>
+                    <div class="author-strip">
+                        <span>Author: <strong>Yunqi Zhong</strong></span>
+                        <a href="https://zhong12350.github.io/" target="_blank" rel="noopener">zhong12350.github.io/</a>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="step00.html" id="start-tutorial" class="cta-button" style="padding: 15px 30px; font-size: 1.1rem;">
-                        <i class="fas fa-play"></i> Start Tutorial
-                    </a>
+                <div class="highlight-grid">
+                    <div class="highlight-box">
+                        <h3><i class="fas fa-route"></i> What improved here</h3>
+                        <p>The site now emphasizes real navigation targets, clear author attribution, and a more task-oriented structure instead of placeholder entry points.</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h3><i class="fas fa-circle-info"></i> Current release note</h3>
+                        <p>SENS_HAND v1 currently focuses on the mechanical and assembly workflow. If future resources, updates, or companion materials are published, the author homepage is the canonical place to check.</p>
+                    </div>
                 </div>
+
+                <section id="tutorial" class="resource-section">
+                    <div class="section-heading">
+                        <h2>Tutorial Overview</h2>
+                        <p>The build is organized as a sequential guide. Each phase has a different risk profile, so it helps to know what changes as you advance.</p>
+                    </div>
+                    <div class="welcome-content">
+                        <div class="welcome-card">
+                            <h3><i class="fas fa-knot"></i> Part 1: Tendons and knots</h3>
+                            <p>Start with routing and knot basics. These steps set the reliability of later motion, so patience matters more than speed.</p>
+                            <ul>
+                                <li>Steps 00-02</li>
+                                <li>Focus on path clarity and tension consistency</li>
+                                <li>Use the final image in each page as your checkpoint</li>
+                            </ul>
+                            <a href="step00.html" class="cta-button">Start Part 1</a>
+                        </div>
+                        <div class="welcome-card">
+                            <h3><i class="fas fa-hand"></i> Part 2: Finger assembly</h3>
+                            <p>Finger and thumb assembly begins to combine routing with geometry. Small alignment mistakes here will be amplified later.</p>
+                            <ul>
+                                <li>Steps 03-07</li>
+                                <li>Verify orientation before tightening hardware</li>
+                                <li>Do not force parts if they resist alignment</li>
+                            </ul>
+                            <a href="step03.html" class="cta-button">Jump to Part 2</a>
+                        </div>
+                        <div class="welcome-card">
+                            <h3><i class="fas fa-cogs"></i> Part 3: Wrist and main body</h3>
+                            <p>This phase carries the most structural complexity. Move slowly, compare each image, and keep the build reversible as long as possible.</p>
+                            <ul>
+                                <li>Steps 08-19</li>
+                                <li>Alignment, bearings, towers, straps, and servo placement</li>
+                                <li>Dry-fit first, then commit to final tightening</li>
+                            </ul>
+                            <a href="step08.html" class="cta-button">Jump to Part 3</a>
+                        </div>
+                        <div class="welcome-card">
+                            <h3><i class="fas fa-microchip"></i> Part 4: Electronics and final assembly</h3>
+                            <p>The final phase integrates the remaining structure and electronics. Treat connector orientation and cable order as carefully as the mechanical fit.</p>
+                            <ul>
+                                <li>Steps 20-29</li>
+                                <li>Servo setup, PCB connection, spool routing, and finishing</li>
+                                <li>Check powered elements only after mechanical verification</li>
+                            </ul>
+                            <a href="step20.html" class="cta-button">Jump to Part 4</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="resource-section">
+                    <div class="section-heading">
+                        <h2>Before You Begin</h2>
+                        <p>Without asking you for extra data, the safest guidance is to keep preparation practical and conservative.</p>
+                    </div>
+                    <div class="welcome-content">
+                        <div class="welcome-card">
+                            <h3><i class="fas fa-toolbox"></i> Prepare the workspace</h3>
+                            <ul>
+                                <li>Keep the parts kit, fasteners, tendon lines, and printed parts laid out visibly</li>
+                                <li>Use tweezers, pliers, and precision drivers within reach</li>
+                                <li>Work in good lighting so image comparison stays easy</li>
+                            </ul>
+                        </div>
+                        <div class="welcome-card">
+                            <h3><i class="fas fa-list-check"></i> Working method</h3>
+                            <ul>
+                                <li>Follow the image order instead of skipping ahead</li>
+                                <li>Use each page's last image as the acceptance check</li>
+                                <li>Do not trim, glue, or fully tighten early unless the page clearly supports it</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="downloads" class="resource-section">
+                    <div class="section-heading">
+                        <h2>Resources and Updates</h2>
+                        <p>Rather than showing fake download buttons, this section points to the places that are actually available right now.</p>
+                    </div>
+                    <div class="welcome-content">
+                        <div class="welcome-card">
+                            <h3><i class="fas fa-book-open"></i> Core resource</h3>
+                            <p>The main tutorial lives in the step pages of this site. Start from step 00 and move forward in order.</p>
+                            <a href="step00.html" class="cta-button">Open Step Guide</a>
+                        </div>
+                        <div class="welcome-card">
+                            <h3><i class="fas fa-globe"></i> Author homepage</h3>
+                            <p>Use the personal homepage for author attribution, future project notes, and any published companion resources.</p>
+                            <a href="https://zhong12350.github.io/" target="_blank" rel="noopener" class="cta-button"><i class="fas fa-up-right-from-square"></i> Visit Yunqi Zhong</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="faq" class="resource-section">
+                    <div class="section-heading">
+                        <h2>FAQ</h2>
+                    </div>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <h3>Should I follow the images or the old placeholder copy?</h3>
+                            <p>Follow the images and the updated per-step guidance. The site has been adjusted to reduce generic template language and to make each page more self-consistent.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>What if a part does not fit as shown?</h3>
+                            <p>Do not force it. Compare orientation with the previous figure, check whether a routing path is blocked, and only then continue.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Where should I look for newer materials?</h3>
+                            <p>The author homepage is the best location to surface future updates when they are available.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="help" class="resource-section">
+                    <div class="author-card">
+                        <div>
+                            <h2>Author Information</h2>
+                            <p>This guide prominently credits <strong>Yunqi Zhong</strong> and links directly to the personal homepage for updates and attribution.</p>
+                        </div>
+                        <a href="https://zhong12350.github.io/" target="_blank" rel="noopener" class="cta-button"><i class="fas fa-user"></i> zhong12350.github.io/</a>
+                    </div>
+                </section>
             </div>
 
             <!-- Step Page (Hidden by default) -->
@@ -861,7 +1148,7 @@
                             <div class="main-visual">
                                 <div class="visual-header">
                                     <h3><i class="fas fa-image"></i> Ashley Stopper Knot Diagram</h3>
-                                    <button class="visual-action">
+                                    <button class="visual-action" type="button" aria-label="Open main image in modal">
                                         <i class="fas fa-expand"></i>
                                     </button>
                                 </div>
@@ -883,10 +1170,10 @@
                                     <div class="carousel-nav">
                                         <span class="carousel-counter">1/6</span>
                                         <div class="carousel-controls">
-                                            <button class="carousel-btn prev">
+                                            <button class="carousel-btn prev" type="button" aria-label="Previous carousel image">
                                                 <i class="fas fa-chevron-left"></i>
                                             </button>
-                                            <button class="carousel-btn next">
+                                            <button class="carousel-btn next" type="button" aria-label="Next carousel image">
                                                 <i class="fas fa-chevron-right"></i>
                                             </button>
                                         </div>
@@ -1062,11 +1349,11 @@
                                         </div>
                                     </div>
                                     <div class="reference-links">
-                                        <a href="#" class="reference-link">
+                                        <a href="https://zhong12350.github.io/" target="_blank" rel="noopener" class="reference-link">
                                             <i class="fas fa-download"></i>
                                             <span>Download High-Res Diagrams</span>
                                         </a>
-                                        <a href="#" class="reference-link">
+                                        <a href="https://zhong12350.github.io/" target="_blank" rel="noopener" class="reference-link">
                                             <i class="fas fa-book"></i>
                                             <span>View Knot Technique Manual</span>
                                         </a>
@@ -1080,7 +1367,7 @@
                 <!-- Step Navigation -->
                 <div class="step-navigation">
                     <div class="nav-section">
-                        <button class="nav-button prev" disabled>
+                        <button class="nav-button prev" type="button" disabled>
                             <i class="fas fa-arrow-left"></i>
                             <span>Previous Step</span>
                         </button>
@@ -1098,7 +1385,7 @@
                 </div>
             </div>
             <div class="nav-section">
-                <button class="nav-button next">
+                <button class="nav-button next" type="button">
                     <span>Next Step</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
@@ -1115,52 +1402,44 @@
     </div>
 
     <!-- Footer -->
-    <footer>
+            <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>SENS_HAND Project</h3>
-                <p>SENS_HAND v1 is an open-source dexterous robotic hand designed for research, education, and development in robotics and prosthetics.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
+                <p>A practical launchpad for assembling SENS_HAND v1 with clearer navigation, fewer dead links, and stronger step-by-step expectations.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
-                <a href="step00.html">Tutorial</a>
-                <a href="#">Downloads</a>
-                <a href="#">FAQ</a>
+                <a href="#tutorial">Tutorial Overview</a>
+                <a href="#downloads">Resources</a>
+                <a href="#faq">FAQ</a>
             </div>
             <div class="footer-section">
-                <h3>Resources</h3>
-                <a href="#">3D Models</a>
-                <a href="#">Firmware</a>
-                <a href="#">Software Tools</a>
-                <a href="#">Parts List</a>
+                <h3>Start Points</h3>
+                <a href="step00.html">Start from Step 00</a>
+                <a href="step08.html">Wrist and Main Body</a>
+                <a href="step20.html">Electronics and Final Assembly</a>
             </div>
             <div class="footer-section">
-                <h3>Community</h3>
-                <a href="#">Forum</a>
-                <a href="#">Projects</a>
-                <a href="#">Contributors</a>
-                <a href="#">Contact</a>
+                <h3>Author</h3>
+                <p><strong>Yunqi Zhong</strong></p>
+                <a href="https://zhong12350.github.io/" target="_blank" rel="noopener">zhong12350.github.io/</a>
+                <p>Prominently credited across the homepage and step pages.</p>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="license-info">
-                <p>SENS_HAND v1 is released under the MIT License. All documentation and tutorials are licensed under Creative Commons Attribution 4.0 International.</p>
+                <p>SENS_HAND v1 is released under the MIT License. This website presents the assembly flow in a more guided format.</p>
             </div>
-            <p>&copy; 2024 SENS_HAND Project. All rights reserved.</p>
+            <p>&copy; 2026 SENS_HAND. Guide presentation by Yunqi Zhong.</p>
         </div>
     </footer>
 
     <!-- Modal for Image Zoom -->
     <div id="imageModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <button class="close-modal" type="button" aria-label="Close enlarged image">&times;</button>
             <img class="modal-image" src="" alt="Enlarged view">
         </div>
     </div>
@@ -1175,7 +1454,7 @@
             const stepItems = document.querySelectorAll('.step-item');
             const prevBtn = document.querySelector('.nav-button.prev');
             const nextBtn = document.querySelector('.nav-button.next');
-            const carousel = document.querySelector('.carousel');
+            const carousel = document.querySelector('.carousel-track');
             const carouselItems = document.querySelectorAll('.carousel-item');
             const indicators = document.querySelectorAll('.indicator');
             const prevCarouselBtn = document.querySelector('.carousel-btn.prev');
@@ -1190,11 +1469,14 @@
             let currentCarouselIndex = 0;
 
             // Start Tutorial Button
+            if (startTutorialBtn) {
+            if (startTutorialBtn) {
             startTutorialBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 // This will now navigate to step00.html directly
                 // The link already has href="step00.html", so we don't need to do anything
             });
+            }
 
             // Step Navigation - Now just update active state on click
             stepItems.forEach(item => {

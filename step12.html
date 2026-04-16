@@ -838,48 +838,112 @@
     border-top: 1px solid #eee;
     flex-shrink: 0;
 }
-  </style>
+  
+        .step-intro {
+            max-width: 900px;
+            margin: 10px 0 18px;
+            color: #4f5f6f;
+            font-size: 1rem;
+        }
+
+        .author-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            margin-top: 18px;
+            background: #eef7ff;
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            border-radius: var(--border-radius);
+        }
+
+        .author-banner a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        .step-image:focus-visible {
+            outline: 3px solid rgba(52, 152, 219, 0.45);
+            outline-offset: 3px;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+    
+        .step-intro {
+            max-width: 900px;
+            margin: 10px 0 18px;
+            color: #4f5f6f;
+            font-size: 1rem;
+        }
+
+        .author-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            margin-top: 18px;
+            background: #eef7ff;
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            border-radius: var(--border-radius);
+        }
+
+        .author-banner a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        .step-image:focus-visible {
+            outline: 3px solid rgba(52, 152, 219, 0.45);
+            outline-offset: 3px;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+    </style>
  </head>
  <body>
   <!-- Top Navigation Bar -->
-  <header class="top-nav">
-   <div class="brand">
-    <div class="brand-logo">
-     <i class="fas fa-robot">
-     </i>
-    </div>
-    <div class="brand-text">
-     <h1>
-      SENS_HAND Dexterous Hand
-     </h1>
-     <p>
-      Step 12: Carpal Gears and Rods
-     </p>
-    </div>
-   </div>
-   <div class="nav-links">
-    <a href="../index.html">
-     <i class="fas fa-home">
-     </i>
-     Home
-    </a>
-    <a href="../index.html#tutorial">
-     <i class="fas fa-book">
-     </i>
-     Tutorial
-    </a>
-    <a href="../index.html#resources">
-     <i class="fas fa-download">
-     </i>
-     Downloads
-    </a>
-    <a href="../index.html#help">
-     <i class="fas fa-question-circle">
-     </i>
-     Help
-    </a>
-   </div>
-  </header>
+          <header class="top-nav">
+        <div class="brand">
+            <div class="brand-logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="brand-text">
+                <h1>SENS_HAND Dexterous Hand</h1>
+                <p>Assembly guide by Yunqi Zhong</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="index.html#tutorial"><i class="fas fa-book"></i> Tutorial</a>
+            <a href="index.html#downloads"><i class="fas fa-download"></i> Resources</a>
+            <a href="index.html#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="https://zhong12350.github.io" target="_blank" rel="noopener"><i class="fas fa-user"></i> Yunqi Zhong</a>
+        </div>
+    </header>
   <!-- Main Container -->
   <div class="container">
    <!-- Sidebar Navigation -->
@@ -1000,52 +1064,38 @@
    <!-- Main Content Area -->
    <main class="main-content">
     <!-- Step Header -->
-    <div class="step-header">
-     <div class="step-meta">
-      <span class="step-number">
-       Step 12
-      </span>
-      <div class="step-progress">
-       <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill" style="width: 41.4%">
-        </div>
-       </div>
-       <span class="progress-text" id="progress-text">
-        12/29
-       </span>
-      </div>
-     </div>
-     <h1>
-      Carpal Gears and Rods
-     </h1>
-     <div class="step-tags">
-      <span class="tag primary">
-       Difficulty: {DIFFICULTY}
-      </span>
-      <span class="tag secondary">
-       Time: {TIME_ESTIMATE}
-      </span>
-      <span class="tag accent">
-       Tools: {TOOLS}
-      </span>
-      <span class="tag success">
-       Part: {PART_NUMBER}
-      </span>
-     </div>
-    </div>
-    <!-- Warning Alert -->
-    <div class="alert-box warning">
-     <i class="fas fa-exclamation-triangle">
-     </i>
-     <div class="alert-content">
-      <h4>
-       Important Safety Notice
-      </h4>
-      <p>
-       Use the correct tools, work in good lighting, and follow standard precautions when handling small parts and electronics.
-      </p>
-     </div>
-    </div>
+                            <div class="step-header">
+                <div class="step-meta">
+                    <span class="step-number">Step 12</span>
+                    <div class="step-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill" style="width: 41.4%"></div>
+                        </div>
+                        <span class="progress-text" id="progress-text">12/29</span>
+                    </div>
+                </div>
+                <h1>Carpal Gears and Rods</h1>
+                <p class="step-intro">This step focuses on carpal gears and rods. Follow the figure sequence carefully and use the first image as your starting reference. Attach wrist drive gear to the carpal assembly.</p>
+                <div class="step-tags">
+                    <span class="tag primary">Difficulty: Advanced</span>
+                    <span class="tag secondary">Time: 12-20 minutes</span>
+                    <span class="tag accent">Focus: Part 3: Wrist and Main Body</span>
+                    <span class="tag success">Author: Yunqi Zhong</span>
+                </div>
+                <div class="author-banner">
+                    <span>Guide curated by <strong>Yunqi Zhong</strong></span>
+                    <a href="https://zhong12350.github.io" target="_blank" rel="noopener">zhong12350.github.io</a>
+                </div>
+            </div>
+
+            <!-- Warning Alert -->
+                            <div class="alert-box warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="alert-content">
+                    <h4>Before you move on</h4>
+                    <p>Confirm the line path and knot position before trimming or locking tension. Do not force mating parts. If alignment resists, back up and compare with the previous image. Double-check polarity and connector seating before any powered test.</p>
+                </div>
+            </div>
     <!-- Image Gallery Section - 6 Images with Captions -->
     <div class="image-gallery">
      <!-- Image 1 -->
@@ -1107,442 +1157,218 @@
       </h3>
      </div>
      <div class="instruction-grid">
-      <!-- Instruction 1 -->
-      <div class="instruction-item">
-       <div class="instruction-number">
-        1
-       </div>
-       <div class="instruction-content">
-        <h4>
-         Prepare Components
-        </h4>
-        <p>
-         Gather all components listed in the tools and materials section. Lay them out on a clean, well-lit workspace.
-        </p>
-        <div class="tip-box">
-         <i class="fas fa-lightbulb">
-         </i>
-         <strong>
-          Tip:
-         </strong>
-         Use an anti-static mat when handling electronic components to prevent damage from static electricity.
-        </div>
-       </div>
-      </div>
-      <!-- Instruction 2 -->
-      <div class="instruction-item">
-       <div class="instruction-number">
-        2
-       </div>
-       <div class="instruction-content">
-        <h4>
-         Identify Orientation Marks
-        </h4>
-        <p>
-         Examine each component for orientation marks, notches, or alignment indicators. Refer to Figure 1.1 for reference.
-        </p>
-        <div class="tip-box">
-         <i class="fas fa-exclamation-circle">
-         </i>
-         <strong>
-          Important:
-         </strong>
-         Incorrect orientation may prevent proper assembly or damage components.
-        </div>
-       </div>
-      </div>
-      <!-- Instruction 3 -->
-      <div class="instruction-item">
-       <div class="instruction-number">
-        3
-       </div>
-       <div class="instruction-content">
-        <h4>
-         Begin Assembly
-        </h4>
-        <p>
-         Start assembling components as shown in Figure 1.2. Apply gentle pressure and ensure proper alignment before securing connections.
-        </p>
-        <div class="tip-box">
-         <i class="fas fa-tools">
-         </i>
-         <strong>
-          Tool Note:
-         </strong>
-         Use the appropriate screwdriver size to avoid stripping screw heads.
-        </div>
-       </div>
-      </div>
-      <!-- Instruction 4 -->
-      <div class="instruction-item">
-       <div class="instruction-number">
-        4
-       </div>
-       <div class="instruction-content">
-        <h4>
-         Secure Connections
-        </h4>
-        <p>
-         Tighten all connections firmly but not excessively. Over-tightening can damage threads or crack components.
-        </p>
-        <div class="tip-box">
-         <i class="fas fa-balance-scale">
-         </i>
-         <strong>
-          Proper Torque:
-         </strong>
-         Tighten until snug, then give an additional quarter turn.
-        </div>
-       </div>
-      </div>
-      <!-- Instruction 5 -->
-      <div class="instruction-item">
-       <div class="instruction-number">
-        5
-       </div>
-       <div class="instruction-content">
-        <h4>
-         Verify Assembly
-        </h4>
-        <p>
-         Compare your assembly with Figure 1.5. Check all connections, alignments, and clearances.
-        </p>
-        <div class="tip-box">
-         <i class="fas fa-check-double">
-         </i>
-         <strong>
-          Quality Check:
-         </strong>
-         Perform a visual inspection from multiple angles to ensure everything is properly assembled.
-        </div>
-       </div>
-      </div>
-      <!-- Instruction 6 -->
-      <div class="instruction-item">
-       <div class="instruction-number">
-        6
-       </div>
-       <div class="instruction-content">
-        <h4>
-         Test Functionality (If Applicable)
-        </h4>
-        <p>
-         If this step involves moving parts or electronics, perform a basic functionality test before proceeding.
-        </p>
-        <div class="tip-box">
-         <i class="fas fa-play-circle">
-         </i>
-         <strong>
-          Test Protocol:
-         </strong>
-         Apply power briefly and check for smooth operation without binding or unusual noises.
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-    <!-- Tools and Materials Section -->
-    <div class="tools-materials">
-     <div class="tools-card">
-      <h3>
-       <i class="fas fa-tools">
-       </i>
-       Required Tools
-      </h3>
-      <div class="tools-list">
-       <div class="tool-item">
-        <div class="tool-icon">
-         <i class="fas fa-screwdriver">
-         </i>
-        </div>
-        <div class="tool-info">
-         <strong>
-          Phillips Screwdriver
-         </strong>
-         <small>
-          Size #1
-         </small>
-        </div>
-       </div>
-       <div class="tool-item">
-        <div class="tool-icon">
-         <i class="fas fa-wrench">
-         </i>
-        </div>
-        <div class="tool-info">
-         <strong>
-          Hex Key Set
-         </strong>
-         <small>
-          1.5mm - 3mm
-         </small>
-        </div>
-       </div>
-       <div class="tool-item">
-        <div class="tool-icon">
-         <i class="fas fa-ruler">
-         </i>
-        </div>
-        <div class="tool-info">
-         <strong>
-          Digital Caliper
-         </strong>
-         <small>
-          For precise measurements
-         </small>
-        </div>
-       </div>
-       <div class="tool-item">
-        <div class="tool-icon">
-         <i class="fas fa-cut">
-         </i>
-        </div>
-        <div class="tool-info">
-         <strong>
-          Flush Cutters
-         </strong>
-         <small>
-          For trimming wires
-         </small>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="materials-card">
-      <h3>
-       <i class="fas fa-box-open">
-       </i>
-       Required Materials
-      </h3>
-      <div class="materials-list">
-       <div class="material-item">
-        <span>
-         3D Printed Parts
-        </span>
-        <span>
-         {PART_COUNT} pieces
-        </span>
-       </div>
-       <div class="material-item">
-        <span>
-         M3 Screws
-        </span>
-        <span>
-         {SCREW_COUNT} pieces
-        </span>
-       </div>
-       <div class="material-item">
-        <span>
-         M3 Nuts
-        </span>
-        <span>
-         {NUT_COUNT} pieces
-        </span>
-       </div>
-       <div class="material-item">
-        <span>
-         Tendon Wires
-        </span>
-        <span>
-         {WIRE_LENGTH} mm
-        </span>
-       </div>
-       <div class="material-item">
-        <span>
-         PTFE Tubes
-        </span>
-        <span>
-         {TUBE_LENGTH} mm
-        </span>
-       </div>
-       <div class="material-item">
-        <span>
-         Servo Motors
-        </span>
-        <span>
-         {SERVO_COUNT} units
-        </span>
-       </div>
-      </div>
-     </div>
-    </div>
-    <!-- Technical Notes -->
-    <div class="notes-section">
-     <h3>
-      <i class="fas fa-sticky-note">
-      </i>
-      Technical Notes
-     </h3>
-     <p>
-      <strong>
-       Tolerance Specifications:
-      </strong>
-      All 3D printed parts are designed with a 0.2mm tolerance. If parts don't fit, check for printing defects or excess material.
-     </p>
-     <p>
-      <strong>
-       Torque Specifications:
-      </strong>
-      M3 screws should be tightened to 0.6-0.8 N·m. Avoid over-tightening to prevent stripping threads in plastic parts.
-     </p>
-     <p>
-      <strong>
-       Electrical Safety:
-      </strong>
-      Always disconnect power when making or modifying electrical connections. Double-check polarity before applying power.
-     </p>
-     <p>
-      <strong>
-       Testing Protocol:
-      </strong>
-      After assembly, perform a full range of motion test without load before applying operational forces.
-     </p>
-    </div>
-    <!-- Video Reference -->
-    <div class="video-section">
-     <div class="section-header">
-      <i class="fas fa-video">
-      </i>
-      <h3>
-       Video Reference
-      </h3>
-     </div>
-     <div class="video-container">
-      <div class="video-placeholder">
-       <i class="fas fa-play-circle">
-       </i>
-       <h4>
-        Step 12 Video Tutorial
-       </h4>
-       <p>
-        Video duration: {VIDEO_DURATION} minutes
-       </p>
-       <p>
-        Video tutorial link will appear here when available.
-       </p>
-      </div>
-     </div>
-    </div>
-    <!-- Step Navigation -->
-    <div class="step-navigation">
-     <a class="nav-button prev" href="step11.html">
-      <i class="fas fa-arrow-left">
-      </i>
-      Previous Step
-     </a>
-     <div class="step-info">
-      <div class="current">
-       Step 12: Carpal Gears and Rods
-      </div>
-      <div class="next">
-       Next: PTFE Tubes in Top Tower
-      </div>
-     </div>
-     <button class="completion-btn" id="completion-btn">
-      <i class="far fa-check-circle">
-      </i>
-      Mark as Complete
-     </button>
-     <a class="nav-button next" href="step13.html">
-      Next Step
-      <i class="fas fa-arrow-right">
-      </i>
-     </a>
-    </div>
-   </main>
+                    <div class="instruction-item">
+                        <div class="instruction-number">1</div>
+                        <div class="instruction-content">
+                            <h4>Primary Assembly View</h4>
+                            <p>Attach wrist drive gear to the carpal assembly.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Tip:</strong> Start by matching your part orientation to this view before touching any fastener or line.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instruction-item">
+                        <div class="instruction-number">2</div>
+                        <div class="instruction-content">
+                            <h4>Component Placement</h4>
+                            <p>Second guide rod installed; verify parallelism with the first rod before adding tension.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Checkpoint:</strong> Treat this figure as a routing checkpoint and verify that nothing is twisted or trapped.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instruction-item">
+                        <div class="instruction-number">3</div>
+                        <div class="instruction-content">
+                            <h4>Connection Details</h4>
+                            <p>Insert two rods, with all tendons run between the two rods.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Tip:</strong> Apply force gradually; if alignment feels wrong, compare again with the previous image.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instruction-item">
+                        <div class="instruction-number">4</div>
+                        <div class="instruction-content">
+                            <h4>Connection Details</h4>
+                            <p>Insert two rods, with all tendons run between the two rods.</p>
+                            <div class="tip-box">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Tip:</strong> Before you continue, confirm that the geometry here still matches the earlier figures.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools and Materials Section -->
+            <div class="tools-materials">
+                <div class="tools-card">
+                    <h3><i class="fas fa-tools"></i> Suggested Tools</h3>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-scissors"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Tweezers</strong>
+                                <small>Useful for guiding tendon paths through tight passages</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-wrench"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Needle-nose Pliers</strong>
+                                <small>Helpful when tightening knots or pulling tendon ends</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-scissors"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Flush Cutters or Scissors</strong>
+                                <small>For trimming excess line cleanly</small>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-screwdriver"></i>
+                            </div>
+                            <div class="tool-info">
+                                <strong>Precision Screwdriver</strong>
+                                <small>For small fasteners and controlled tightening</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="materials-card">
+                    <h3><i class="fas fa-box-open"></i> What To Have Ready</h3>
+                    <div class="materials-list">
+                        <div class="material-item">
+                            <span>Tendon line or routing wire</span>
+                            <span>Prepare the same line shown in the figure sequence</span>
+                        </div>
+                        <div class="material-item">
+                            <span>PTFE tube or strap parts</span>
+                            <span>Needed when this step references routing guides or straps</span>
+                        </div>
+                        <div class="material-item">
+                            <span>Printed structural parts</span>
+                            <span>Compare the orientation of each part with the images before joining them</span>
+                        </div>
+                        <div class="material-item">
+                            <span>Fasteners and inserts</span>
+                            <span>Have the screws and matching nuts for this stage ready</span>
+                        </div>
+                        <div class="material-item">
+                            <span>Electronics for this stage</span>
+                            <span>Keep cables, PCB, and servo parts organized before installation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Technical Notes -->
+            <div class="notes-section">
+                <h3><i class="fas fa-sticky-note"></i> Step Notes</h3>
+                <p><strong>Carpal Gears and Rods Note:</strong> Keep routing paths smooth and avoid introducing twists before you tighten anything.</p>
+                <p><strong>Carpal Gears and Rods Note:</strong> Dry-fit parts first and only tighten to final torque after alignment looks correct.</p>
+                <p><strong>Carpal Gears and Rods Note:</strong> Disconnect power during fitting and re-check connector orientation before any test.</p>
+                <p><strong>Carpal Gears and Rods Note:</strong> Use the last figure on the page as a verification target before you continue.</p>
+            </div>
+
+            <!-- Video Reference -->
+            <div class="video-section">
+                <div class="section-header">
+                    <i class="fas fa-video"></i>
+                    <h3>Reference and Updates</h3>
+                </div>
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <i class="fas fa-link"></i>
+                        <h4>Step 12 currently uses image-led instructions</h4>
+                        <p>No dedicated embedded video is linked on this page yet.</p>
+                        <p>For project updates, release notes, and future supporting material, visit the author homepage.</p>
+                        <p><a href="https://zhong12350.github.io" target="_blank" rel="noopener">Visit Yunqi Zhong's homepage</a></p>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Step Navigation -->
+            <div class="step-navigation">
+                <a href="step11.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous Step
+                </a>
+                
+                <div class="step-info">
+                    <div class="current">Step 12: Carpal Gears and Rods</div>
+                    <div class="next">Next: PTFE Tubes in Top Tower</div>
+                </div>
+                
+                <button class="completion-btn" id="completion-btn">
+                    <i class="far fa-check-circle"></i>
+                    Mark as Complete
+                </button>
+                
+                <a href="step13.html" class="nav-button next">
+                    Next Step
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
   </div>
   <!-- Footer -->
-  <footer>
-   <div class="footer-content">
-    <div class="footer-section">
-     <h3>
-      SENS_HAND Project
-     </h3>
-     <p>
-      SENS_HAND v1 is an open-source dexterous robotic hand designed for research, education, and development in robotics and prosthetics.
-     </p>
-     <div class="social-links">
-      <a href="#">
-       <i class="fab fa-github">
-       </i>
-      </a>
-      <a href="#">
-       <i class="fab fa-youtube">
-       </i>
-      </a>
-      <a href="#">
-       <i class="fab fa-discord">
-       </i>
-      </a>
-      <a href="#">
-       <i class="fab fa-twitter">
-       </i>
-      </a>
-     </div>
-    </div>
-    <div class="footer-section">
-     <h3>
-      Quick Links
-     </h3>
-     <a href="../index.html">
-      Home
-     </a>
-     <a href="../index.html#tutorial">
-      Tutorial Overview
-     </a>
-     <a href="../index.html#downloads">
-      Downloads
-     </a>
-     <a href="../index.html#faq">
-      FAQ
-     </a>
-    </div>
-    <div class="footer-section">
-     <h3>
-      Step Navigation
-     </h3>
-     <a href="step00.html">
-      Steps 00-02
-     </a>
-     <a href="step03.html">
-      Steps 03-07
-     </a>
-     <a href="step08.html">
-      Steps 08-19
-     </a>
-     <a href="step20.html">
-      Steps 20-29
-     </a>
-    </div>
-    <div class="footer-section">
-     <h3>
-      Support
-     </h3>
-     <a href="../contact.html">
-      Contact Us
-     </a>
-     <a href="../community.html">
-      Community Forum
-     </a>
-     <a href="../donate.html">
-      Support Project
-     </a>
-     <a href="../report-issue.html">
-      Report Issue
-     </a>
-    </div>
-   </div>
-   <div class="footer-bottom">
-    <div class="license-info">
-     <p>
-      SENS_HAND v1 is released under the MIT License. All documentation and tutorials are licensed under Creative Commons Attribution 4.0 International.
-     </p>
-    </div>
-    <p>
-     © 2024 SENS_HAND Project. All rights reserved.
-    </p>
-   </div>
-  </footer>
+          <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SENS_HAND Project</h3>
+                <p>A clearer assembly guide for SENS_HAND v1 with image-led steps, verification checkpoints, and a more reliable navigation flow.</p>
+                <div class="social-links">
+                    <a href="https://zhong12350.github.io" target="_blank" rel="noopener" aria-label="Author homepage"><i class="fas fa-globe"></i></a>
+                    <a href="index.html#tutorial" aria-label="Tutorial overview"><i class="fas fa-book"></i></a>
+                    <a href="index.html#downloads" aria-label="Resources"><i class="fas fa-download"></i></a>
+                    <a href="index.html#faq" aria-label="FAQ"><i class="fas fa-question-circle"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="index.html#tutorial">Tutorial Overview</a>
+                <a href="index.html#downloads">Resources</a>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="step00.html">Steps 00-02</a>
+                <a href="step03.html">Steps 03-07</a>
+                <a href="step08.html">Steps 08-19</a>
+                <a href="step20.html">Steps 20-29</a>
+            </div>
+            <div class="footer-section">
+                <h3>Author</h3>
+                <p><strong>Yunqi Zhong</strong></p>
+                <a href="https://zhong12350.github.io" target="_blank" rel="noopener">zhong12350.github.io</a>
+                <p>Use the homepage for project updates, release notes, and published supporting materials.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="license-info">
+                <p>SENS_HAND v1 is released under the MIT License. Documentation on this site is organized as a guided assembly reference.</p>
+            </div>
+            <p>&copy; 2026 SENS_HAND. Guide presentation by Yunqi Zhong.</p>
+        </div>
+    </footer>
   <!-- Modal for Image Zoom -->
   <div class="modal" id="imageModal">
    <div class="modal-content">
@@ -1552,118 +1378,110 @@
     <img alt="Enlarged view" class="modal-image" src=""/>
    </div>
   </div>
-  <script>
-   // JavaScript for step page functionality
+          <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get current step number from URL or set default
-            const currentStep = parseInt("12") || 0;
+            const currentStep = parseInt('12', 10);
             const totalSteps = 29;
-            
-            // Calculate progress
-            const progressPercent = (currentStep / totalSteps) * 100;
-            document.getElementById('progress-fill').style.width = `${progressPercent}%`;
-            
-            // Set up image modal
+            const stepId = String(currentStep).padStart(2, '0');
+            const progressFill = document.getElementById('progress-fill');
             const modal = document.getElementById('imageModal');
             const modalImage = document.querySelector('.modal-image');
-            const closeModal = document.querySelector('.close-modal');
+            const closeModalButton = document.querySelector('.close-modal');
             const stepImages = document.querySelectorAll('.step-image');
-            
-            // Open modal when clicking on any image
-            stepImages.forEach(img => {
-                img.addEventListener('click', function() {
-                    modalImage.src = this.src;
-                    modal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            // Close modal
-            closeModal.addEventListener('click', function() {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Close modal when clicking outside the image
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
-            // Mark step as complete
             const completionBtn = document.getElementById('completion-btn');
-            completionBtn.addEventListener('click', function() {
-                if (this.classList.contains('completed')) {
-                    this.classList.remove('completed');
-                    this.innerHTML = '<i class="far fa-check-circle"></i> Mark as Complete';
-                    localStorage.removeItem(`step-${currentStep}-completed`);
-                } else {
-                    this.classList.add('completed');
-                    this.innerHTML = '<i class="fas fa-check-circle"></i> Completed';
-                    localStorage.setItem(`step-${currentStep}-completed`, 'true');
-                }
-            });
-            
-            // Check if step was previously marked as complete
-            if (localStorage.getItem(`step-${currentStep}-completed`) === 'true') {
-                completionBtn.classList.add('completed');
-                completionBtn.innerHTML = '<i class="fas fa-check-circle"></i> Completed';
-            }
-            
-            // Update navigation based on current step
             const prevBtn = document.querySelector('.nav-button.prev');
             const nextBtn = document.querySelector('.nav-button.next');
-            
-            // Disable previous button if on first step
-            if (currentStep === 0) {
-                prevBtn.style.display = 'none';
+
+            if (progressFill) {
+                progressFill.style.width = `${(currentStep / totalSteps) * 100}%`;
             }
-            
-            // Change next button text if on last step
-            if (currentStep === 29) {
-                nextBtn.innerHTML = 'Finish Tutorial <i class="fas fa-flag-checkered"></i>';
+
+            function openModal(src, altText) {
+                if (!modal || !modalImage) return;
+                modalImage.src = src;
+                modalImage.alt = altText || 'Expanded step image';
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             }
-            
-            // Set active state in sidebar
-            const stepItems = document.querySelectorAll('.step-item');
-            stepItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.textContent.includes(`Step ${currentStep}`) || 
-                    item.textContent.startsWith(`${currentStep}:`)) {
-                    item.classList.add('active');
-                }
-            });
-            
-            // Keyboard shortcuts
-            document.addEventListener('keydown', function(e) {
-                // Escape to close modal
-                if (e.key === 'Escape' && modal.style.display === 'flex') {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-                
-                // Arrow keys for navigation when modal is closed
-                if (modal.style.display !== 'flex') {
-                    if (e.key === 'ArrowLeft' && currentStep > 0) {
-                        window.location.href = `step${currentStep - 1}.html`;
+
+            function closeModal() {
+                if (!modal) return;
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            stepImages.forEach((img) => {
+                img.setAttribute('tabindex', '0');
+                img.addEventListener('click', function() {
+                    openModal(this.src, this.alt);
+                });
+                img.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        openModal(this.src, this.alt);
                     }
-                    if (e.key === 'ArrowRight' && currentStep < 29) {
-                        window.location.href = `step${currentStep + 1}.html`;
-                    }
-                }
-            });
-            
-            // Initialize tooltips (if any)
-            const tooltips = document.querySelectorAll('[data-tooltip]');
-            tooltips.forEach(tooltip => {
-                tooltip.addEventListener('mouseenter', function() {
-                    const tooltipText = this.getAttribute('data-tooltip');
-                    // You can implement a custom tooltip system here if needed
                 });
             });
+
+            if (closeModalButton) {
+                closeModalButton.addEventListener('click', closeModal);
+            }
+
+            if (modal) {
+                modal.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+
+            if (completionBtn) {
+                completionBtn.addEventListener('click', function() {
+                    const key = `step-${stepId}-completed`;
+                    const isCompleted = this.classList.contains('completed');
+                    if (isCompleted) {
+                        this.classList.remove('completed');
+                        this.innerHTML = '<i class="far fa-check-circle"></i> Mark as Complete';
+                        localStorage.removeItem(key);
+                    } else {
+                        this.classList.add('completed');
+                        this.innerHTML = '<i class="fas fa-check-circle"></i> Completed';
+                        localStorage.setItem(key, 'true');
+                    }
+                });
+
+                if (localStorage.getItem(`step-${stepId}-completed`) === 'true') {
+                    completionBtn.classList.add('completed');
+                    completionBtn.innerHTML = '<i class="fas fa-check-circle"></i> Completed';
+                }
+            }
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal && modal.style.display === 'flex') {
+                    closeModal();
+                    return;
+                }
+
+                if (modal && modal.style.display === 'flex') {
+                    return;
+                }
+
+                if (event.key === 'ArrowLeft' && currentStep > 0) {
+                    window.location.href = `step${String(currentStep - 1).padStart(2, '0')}.html`;
+                }
+                if (event.key === 'ArrowRight' && currentStep < totalSteps) {
+                    window.location.href = `step${String(currentStep + 1).padStart(2, '0')}.html`;
+                }
+            });
+
+            if (currentStep === 0 && prevBtn) {
+                prevBtn.style.display = 'none';
+            }
+
+            if (currentStep === totalSteps && nextBtn) {
+                nextBtn.innerHTML = 'Finish Tutorial <i class="fas fa-flag-checkered"></i>';
+            }
         });
-  </script>
+    </script>
  </body>
 </html>
